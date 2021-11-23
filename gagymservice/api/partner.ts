@@ -52,6 +52,7 @@ const partnerApi = {
   get: () =>
     axios.get<PartnerItemResponse>(
        `${process.env.NEXT_PUBLIC_API_BASE}/partner`
+      
     ),
   // axios.get<응답데이터의타입>(요청URL);
   // GET 요청URL HTTP/1.1
