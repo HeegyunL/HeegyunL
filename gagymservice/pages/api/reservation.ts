@@ -35,27 +35,27 @@ const reservationApi = {
   ),
 
   fetch: () =>
-  axios.get<ReservationItemResponse[]>(`http://localhost:8080/reservation`),
+  axios.get<ReservationItemResponse[]>(`http://3.35.145.146:8080/reservation`),
 
   fetchPaging: (page: number, size: number) =>
     axios.get<ReservationItemResponse>(
-      `http://localhost:8080/reservation`
+      `http://3.35.145.146:8080/reservation`
     ),
 
 
   add: (diaryItem: ReservationItemRequest) =>
     axios.post<ReservationItemResponse>(
-      `http://localhost:8080/reservation`,
+      `http://3.35.145.146:8080/reservation`,
       diaryItem
     ),
 
   remove: (id: number) =>
-    axios.delete<boolean>(`http://localhost:8080/reservation/${id}`),
+    axios.delete<boolean>(`http://3.35.145.146:8080/reservation/${id}`),
 
 
   modify: (id: number, reservationItem: ReservationItemRequest) =>
     axios.put<ReservationItemResponse>(
-      `http://localhost:8080/reservation/${id}`,
+      `http://3.35.145.146:8080/reservation/${id}`,
       reservationItem
     ),
 };

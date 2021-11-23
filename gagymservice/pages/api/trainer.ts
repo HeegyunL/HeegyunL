@@ -41,24 +41,24 @@ export interface TrainerItemRequest{
 const trainerApi = {
   get: () =>
     axios.get<TrainerItemResponse>(
-       `http://localhost:8080/trainer`
+       `http://3.35.145.146:8080/trainer`
     ),
   // axios.get<응답데이터의타입>(요청URL);
   // GET 요청URL HTTP/1.1
   fetch: () =>
-  axios.get<TrainerItemResponse[]>(`http://localhost:8080/trainer`),
+  axios.get<TrainerItemResponse[]>(`http://3.35.145.146:8080/trainer`),
   
     add:(trainerItem:TrainerItemRequest)=>
   axios.post<TrainerItemResponse>(
-    `http://localhost:8080/trainer`,
+    `http://3.35.145.146:8080/trainer`,
     trainerItem
   ),
   remove:(id:number) =>
-  axios.delete<boolean>(`http://localhost:8080/trainer/${id}`),
+  axios.delete<boolean>(`http://3.35.145.146:8080/trainer/${id}`),
 
   modify :( id:number,trainerItem:TrainerItemRequest)=>
   axios.put<TrainerItemResponse>(
-    `http://localhost:8080/trainer/${id}`,
+    `http://3.35.145.146:8080/trainer/${id}`,
     trainerItem
   )
 };
