@@ -11,7 +11,7 @@ import { createAction, nanoid, PayloadAction } from "@reduxjs/toolkit";
 import { DiaryItem } from "../../provider/modules/diary";
 import { call, put, takeEvery, takeLatest } from "@redux-saga/core/effects";
 import { AxiosResponse } from "axios";
-import api,{ DiaryItemRequest, DiaryItemResponse, DiaryPagingResponse } from "../../pages/api/diary";
+import api,{ DiaryItemRequest, DiaryItemResponse, DiaryPagingResponse } from "../../api/diary";
 
 
 

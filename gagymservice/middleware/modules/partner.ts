@@ -2,11 +2,11 @@ import { takeEvery, call, select, put, takeLatest} from "@redux-saga/core/effect
 import { createAction, nanoid, PayloadAction } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
 import { dataUrlToFile } from "../../lib/string";
-import api,{ PartnerItemRequest, PartnerItemResponse } from "../../pages/api/partner";
+import api,{ PartnerItemRequest, PartnerItemResponse } from "../../api/partner";
 import { RootState } from "../../provider";
 import partnerReducer,{ addPartner,  initialCompleted, initialPartner, initialPartnerItem, modifyPartner, PartnerItem,removePartner } from "../../provider/modules/partner";
 import { TrainerItem } from "../../provider/modules/trainer";
-import fileApi from "../../pages/api/file";
+import fileApi from "../../api/file";
 import partner from "../../provider/modules/partner";
 import { addAlert } from "../../provider/modules/allert";
 

@@ -37,27 +37,27 @@ export interface DiaryItemRequest {
 const diaryApi = {
 
   fetch: () =>
-  axios.get<DiaryItemResponse[]>(`http://3.35.145.146:8080/diary`),
+  axios.get<DiaryItemResponse[]>(`${process.env.NEXT_PUBLIC_API_BASE}/diary`),
 
   fetchPaging: (page: number, size: number) =>
     axios.get<DiaryPagingResponse>(
-      `http://3.35.145.146:8080/diary`
+      `${process.env.NEXT_PUBLIC_API_BASE}/diary`
     ),
 
 
   add: (diaryItem: DiaryItemRequest) =>
     axios.post<DiaryItemResponse>(
-      `http://3.35.145.146:8080/diary`,
+      `${process.env.NEXT_PUBLIC_API_BASE}/diary`,
       diaryItem
     ),
 
   remove: (id: number) =>
-    axios.delete<boolean>(`http://3.35.145.146:8080/diary/${id}`),
+    axios.delete<boolean>(`${process.env.NEXT_PUBLIC_API_BASE}/diary/${id}`),
 
 
   modify: (id: number, diaryItem: DiaryItemRequest) =>
     axios.put<DiaryItemResponse>(
-      `http://3.35.145.146:8080/diary/${id}`,
+      `${process.env.NEXT_PUBLIC_API_BASE}/${id}`,
       diaryItem
     )
 };

@@ -8,7 +8,7 @@ import { createAction, nanoid, PayloadAction } from "@reduxjs/toolkit";
 import { addReservation, initialReservation, modifyReservation, removeReservation, ReservationItem } from "../../provider/modules/reservation";
 import { call, put, takeEvery, takeLatest } from "@redux-saga/core/effects";
 import { AxiosResponse } from "axios";
-import api,{ ReservationItemRequest, ReservationItemResponse } from "../../pages/api/reservation";
+import api,{ ReservationItemRequest, ReservationItemResponse } from "../../api/reservation";
 
 
 

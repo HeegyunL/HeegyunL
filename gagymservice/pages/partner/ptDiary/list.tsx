@@ -10,7 +10,7 @@ import {
 } from "../../../middleware/modules/diary";
 import { requestFetchPartnerItem } from "../../../middleware/modules/partner";
 import { AppDispatch, RootState } from "../../../provider";
-import { DiaryItemResponse } from "../../api/diary";
+import { DiaryItemResponse } from "../../../api/diary";
 
 const getTimeString = (unixtime: number) => {
   const dateTime = new Date(unixtime);

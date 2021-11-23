@@ -1,5 +1,5 @@
 import axios from "axios";
-import { TrainerItem } from "../../provider/modules/trainer";
+import { TrainerItem } from "../provider/modules/trainer";
 
 export interface PartnerItemResponse{
   id: number;
@@ -51,25 +51,25 @@ export interface PartnerItemRequest{
 const partnerApi = {
   get: () =>
     axios.get<PartnerItemResponse>(
-       `http://3.35.145.146:8080/partner`
+       `${process.env.NEXT_PUBLIC_API_BASE}/partner`
     ),
   // axios.get<응답데이터의타입>(요청URL);
   // GET 요청URL HTTP/1.1
   fetch: () =>
-  axios.get<PartnerItemResponse[]>(`http://3.35.145.146:8080/partner`),
+  axios.get<PartnerItemResponse[]>(`${process.env.NEXT_PUBLIC_API_BASE}/partner`),
   
     add:(partnerItem:PartnerItemRequest)=>
   axios.post<PartnerItemResponse>(
-    `http://3.35.145.146:8080/partner`,
+    `${process.env.NEXT_PUBLIC_API_BASE}/partner`,
     partnerItem
   ),
   
   remove:(id:number) =>
-  axios.delete<boolean>(`http://3.35.145.146:8080/partner/${id}`),
+  axios.delete<boolean>(`${process.env.NEXT_PUBLIC_API_BASE}/${id}`),
 
   modify :( id:number,partnerItem:PartnerItemRequest)=>
   axios.put<PartnerItemResponse>(
-    `http://3.35.145.146:8080/partner/${id}`,
+    `${process.env.NEXT_PUBLIC_API_BASE}/${id}`,
     partnerItem
   )
 };

@@ -31,31 +31,31 @@ export interface ReservationItemRequest {
 const reservationApi = {
   get: () =>
   axios.get<ReservationItemResponse>(
-     `http://localhost:8080/partner`
+     `${process.env.NEXT_PUBLIC_API_BASE}/partner`
   ),
 
   fetch: () =>
-  axios.get<ReservationItemResponse[]>(`http://3.35.145.146:8080/reservation`),
+  axios.get<ReservationItemResponse[]>(`${process.env.NEXT_PUBLIC_API_BASE}/reservation`),
 
   fetchPaging: (page: number, size: number) =>
     axios.get<ReservationItemResponse>(
-      `http://3.35.145.146:8080/reservation`
+      `${process.env.NEXT_PUBLIC_API_BASE}/reservation`
     ),
 
 
   add: (diaryItem: ReservationItemRequest) =>
     axios.post<ReservationItemResponse>(
-      `http://3.35.145.146:8080/reservation`,
+      `${process.env.NEXT_PUBLIC_API_BASE}/reservation`,
       diaryItem
     ),
 
   remove: (id: number) =>
-    axios.delete<boolean>(`http://3.35.145.146:8080/reservation/${id}`),
+    axios.delete<boolean>(`${process.env.NEXT_PUBLIC_API_BASE}/reservation/${id}`),
 
 
   modify: (id: number, reservationItem: ReservationItemRequest) =>
     axios.put<ReservationItemResponse>(
-      `http://3.35.145.146:8080/reservation/${id}`,
+      `${process.env.NEXT_PUBLIC_API_BASE}/reservation/${id}`,
       reservationItem
     ),
 };

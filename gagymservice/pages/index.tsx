@@ -11,8 +11,8 @@ import Layout from "../components/layout";
 
 import partnerSaga from "../middleware/modules/partner";
 import { RootState } from "../provider";
-import { DiaryItemResponse } from "./api/diary";
-import partnerApi, { PartnerItemResponse } from "./api/partner";
+import { DiaryItemResponse } from "../api/diary";
+import partnerApi, { PartnerItemResponse } from "../api/partner";
 
 const Index = () => {
   const partners = useSelector((state: RootState) => state.partner);

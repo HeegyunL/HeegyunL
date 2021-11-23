@@ -2,8 +2,8 @@ import { takeEvery, call, select, put, takeLatest} from "@redux-saga/core/effect
 import { createAction, nanoid, PayloadAction } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
 import { dataUrlToFile } from "../../lib/string";
-import fileApi from "../../pages/api/file";
-import api,{ TrainerItemRequest, TrainerItemResponse } from "../../pages/api/trainer";
+import fileApi from "../../api/file";
+import api,{ TrainerItemRequest, TrainerItemResponse } from "../../api/trainer";
 import { RootState } from "../../provider";
 import trainerReducer,{ addTrainer,  initialCompleted, initialTrainer, initialTrainerItem, modifyTrainer, TrainerItem } from "../../provider/modules/trainer";
 
