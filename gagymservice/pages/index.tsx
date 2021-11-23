@@ -114,7 +114,10 @@ const Index = () => {
                 </thead>
                 <tbody>
                   {reservations.data.map((item, index) => (
-                    <Link href={`/partner/ptDiary/detail/${item.id}`}>
+                    <Link
+                      href={`/partner/ptDiary/detail/${item.id}`}
+                      key={`partners-item-${index}`}
+                    >
                       <tr key={`partners-item-${index}`}>
                         <td>{item.memberName}</td>
                         <td>{item.gymName}</td>
