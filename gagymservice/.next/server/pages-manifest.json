@@ -1,23 +1,6 @@
 {
   "/_app": "pages/_app.js",
-  "/api/diary": "pages/api/diary.js",
-  "/api/file": "pages/api/file.js",
-  "/api/hello": "pages/api/hello.js",
-  "/api/partner": "pages/api/partner.js",
-  "/api/reservation": "pages/api/reservation.js",
-  "/api/trainer": "pages/api/trainer.js",
-  "/": "pages/index.html",
-  "/partner/information/Create": "pages/partner/information/Create.html",
-  "/partner/information/Tcreate": "pages/partner/information/Tcreate.html",
-  "/partner/information/detail/[id]": "pages/partner/information/detail/[id].html",
-  "/partner/information/edit/[id]": "pages/partner/information/edit/[id].html",
-  "/partner/information/list": "pages/partner/information/list.html",
-  "/partner/information/tList": "pages/partner/information/tList.html",
-  "/partner/ptDiary/detail/[id]": "pages/partner/ptDiary/detail/[id].html",
-  "/partner/ptDiary/list": "pages/partner/ptDiary/list.html",
-  "/partner/reservation/detail/[id]": "pages/partner/reservation/detail/[id].html",
-  "/partner/reservation/list": "pages/partner/reservation/list.html",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
+  "/partner/information/list": "pages/partner/information/list.js"
 }

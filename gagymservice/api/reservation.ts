@@ -31,7 +31,7 @@ export interface ReservationItemRequest {
 const reservationApi = {
   get: () =>
   axios.get<ReservationItemResponse>(
-     `${process.env.NEXT_PUBLIC_API_BASE}/partner`
+    `${process.env.NEXT_PUBLIC_API_BASE}/reservation`
   ),
 
   fetch: () =>
