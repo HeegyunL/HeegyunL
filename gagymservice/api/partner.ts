@@ -51,17 +51,17 @@ export interface PartnerItemRequest{
 const partnerApi = {
   get: () =>
     axios.get<PartnerItemResponse>(
-       `http://3.35.145.146:8080/partner`
+       `http://52.79.120.222:8080/partner`
       
     ),
   // axios.get<응답데이터의타입>(요청URL);
   // GET 요청URL HTTP/1.1
   fetch: () =>
-  axios.get<PartnerItemResponse[]>(`http://3.35.145.146:8080/partner`),
+  axios.get<PartnerItemResponse[]>(`http://52.79.120.222:8080/partner`),
   
     add:(partnerItem:PartnerItemRequest)=>
   axios.post<PartnerItemResponse>(
-    `http://3.35.145.146:8080/partner`,
+    `http://52.79.120.222:8080/partner`,
     partnerItem
   ),
   
