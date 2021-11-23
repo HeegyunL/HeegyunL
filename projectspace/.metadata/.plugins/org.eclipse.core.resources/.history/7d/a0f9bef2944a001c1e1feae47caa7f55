@@ -1,0 +1,5 @@
+package com.git.gagymservice.lib;
+
+public class TextProcesser {
+
+}

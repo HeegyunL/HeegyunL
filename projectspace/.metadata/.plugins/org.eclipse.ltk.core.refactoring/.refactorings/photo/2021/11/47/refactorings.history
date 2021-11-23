@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.git.photo.PhotoControoler&apos; to &apos;PhotoController&apos;&#x0A;- Original project: &apos;photo&apos;&#x0A;- Original element: &apos;com.git.photo.PhotoControoler&apos;&#x0A;- Renamed element: &apos;com.git.photo.PhotoController&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;PhotoControoler&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.git.photo{PhotoControoler.java[PhotoControoler" matchStrategy="1" name="PhotoController" qualified="false" references="true" similarDeclarations="false" stamp="1637216884568" textual="false" version="1.0"/>
+</session>

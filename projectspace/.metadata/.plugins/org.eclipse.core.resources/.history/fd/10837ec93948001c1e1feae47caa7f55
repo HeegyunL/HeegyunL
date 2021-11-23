@@ -1,0 +1,5 @@
+package com.git.photo;
+
+public class PhotoConfiguration {
+
+}

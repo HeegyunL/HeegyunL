@@ -1,0 +1,38 @@
+.body {
+  margin: auto;
+  width: 850px;
+  margin-left: 50px;
+}
+.div {
+  margin-top: 1rem;
+  margin-left: 60px;
+}
+.div > p {
+  font-weight: bold;
+  font-size: medium;
+}
+.div > h4 {
+  margin-left: 5px;
+  /* margin-bottom: 0.5em; */
+}
+.input {
+  width: 50%;
+  height: 30px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1;
+}
+.button {
+  text-align: center;
+  margin-top: 50px;
+  margin-right: 100px;
+}
+.tInput {
+  margin-left: 10px;
+  background-color: rgb(245, 245, 245);
+  /* border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1; */
+}
