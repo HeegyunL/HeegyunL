@@ -66,11 +66,11 @@ const partnerApi = {
   ),
   
   remove:(id:number) =>
-  axios.delete<boolean>(`${process.env.NEXT_PUBLIC_API_BASE}/partner/${id}`),
+  axios.delete<boolean>(`http://52.79.120.222:8080/partner/${id}`),
 
   modify :( id:number,partnerItem:PartnerItemRequest)=>
   axios.put<PartnerItemResponse>(
-    `${process.env.NEXT_PUBLIC_API_BASE}/partner/${id}`,
+    `http://52.79.120.222:8080/partner/${id}`,
     partnerItem
   )
 };
