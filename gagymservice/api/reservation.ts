@@ -31,31 +31,31 @@ export interface ReservationItemRequest {
 const reservationApi = {
   get: () =>
   axios.get<ReservationItemResponse>(
-    `${process.env.NEXT_PUBLIC_API_BASE}/reservation`
+    `http://52.79.120.222:8080/reservation`
   ),
 
   fetch: () =>
-  axios.get<ReservationItemResponse[]>(`${process.env.NEXT_PUBLIC_API_BASE}/reservation`),
+  axios.get<ReservationItemResponse[]>(`http://52.79.120.222:8080/reservation`),
 
   fetchPaging: (page: number, size: number) =>
     axios.get<ReservationItemResponse>(
-      `${process.env.NEXT_PUBLIC_API_BASE}/reservation`
+      `http://52.79.120.222:8080/reservation`
     ),
 
 
   add: (diaryItem: ReservationItemRequest) =>
     axios.post<ReservationItemResponse>(
-      `${process.env.NEXT_PUBLIC_API_BASE}/reservation`,
+      `http://52.79.120.222:8080/reservation`,
       diaryItem
     ),
 
   remove: (id: number) =>
-    axios.delete<boolean>(`${process.env.NEXT_PUBLIC_API_BASE}/reservation/${id}`),
+    axios.delete<boolean>(`http://52.79.120.222:8080/reservation/${id}`),
 
 
   modify: (id: number, reservationItem: ReservationItemRequest) =>
     axios.put<ReservationItemResponse>(
-      `${process.env.NEXT_PUBLIC_API_BASE}/reservation/${id}`,
+      `http://52.79.120.222:8080/reservation/${id}`,
       reservationItem
     ),
 };
