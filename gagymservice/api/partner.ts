@@ -57,7 +57,7 @@ const partnerApi = {
   // axios.get<응답데이터의타입>(요청URL);
   // GET 요청URL HTTP/1.1
   fetch: () =>
-  axios.get<PartnerItemResponse[]>(`${process.env.NEXT_PUBLIC_API_BASE}/partner`),
+  axios.get<PartnerItemResponse[]>(`http://ec2-3-35-145-146.ap-northeast-2.compute.amazonaws.com:8080/partner`),
   
     add:(partnerItem:PartnerItemRequest)=>
   axios.post<PartnerItemResponse>(
