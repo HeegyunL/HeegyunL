@@ -1,9 +1,0 @@
-package com.git.receive.reservation.event;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-public class requestReservation {
-
-}

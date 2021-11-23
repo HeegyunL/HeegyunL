@@ -4288,3 +4288,106 @@ java.lang.NullPointerException: Cannot invoke "org.springsource.ide.eclipse.comm
 	at org.eclipse.osgi.internal.framework.BundleContextImpl.dispatchEvent(BundleContextImpl.java:935)
 	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:228)
 	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:339)
+!SESSION 2021-11-23 12:13:47.990 -----------------------------------------------
+eclipse.buildId=4.12.0.202109130635
+java.version=16.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=ko_KR
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4 -keyring /Users/hee/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springframework.boot.ide.branding.sts4 -keyring /Users/hee/.eclipse_keyring
+
+!ENTRY org.eclipse.jface 2 0 2021-11-23 12:13:56.833
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2021-11-23 12:13:56.833
+!MESSAGE A conflict occurred for COMMAND+SHIFT+T:
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7f5ecada,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@55574295,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.ui 2 2 2021-11-23 12:14:13.572
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:26.868
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:26.872
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@5a3878e0[org.springframework.tooling.boot.ls:1.28.0.202109130547(id=555)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:26.874
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:26.897
+!MESSAGE Instantiating ReusableClasspathListenerHandler
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.096
+!MESSAGE Boot LS startup time from start to initialized: 2207ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.383
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.tabdTLaCisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.392
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.396
+!MESSAGE Scheduling initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.400
+!MESSAGE Scheduling initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.405
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.tabdTLaC => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.406
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.432
+!MESSAGE classpath=127 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.438
+!MESSAGE buffering callback sts4.classpath.tabdTLaC gagymservice false 127
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.441
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.447
+!MESSAGE classpath=104 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.449
+!MESSAGE buffering callback sts4.classpath.tabdTLaC gateway false 104
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.450
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.479
+!MESSAGE classpath=361 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.487
+!MESSAGE buffering callback sts4.classpath.tabdTLaC photo false 361
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.489
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.499
+!MESSAGE classpath=78 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.500
+!MESSAGE buffering callback sts4.classpath.tabdTLaC service3 false 78
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:29.500
+!MESSAGE executing callback sts4.classpath.tabdTLaC 4 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-23 12:16:30.108
+!MESSAGE executing callback sts4.classpath.tabdTLaC SUCCESS [done]

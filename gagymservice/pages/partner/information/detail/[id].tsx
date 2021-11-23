@@ -213,12 +213,7 @@ const PartnerDetail = () => {
                       isOpen={modalOpen}
                     >
                       <div className=" modal-header">
-                        <h5
-                          className=" modal-title"
-                          // id="exampleModalLabel"
-                        >
-                          강사 소개
-                        </h5>
+                        <h5 className=" modal-title">강사 소개</h5>
                         <button
                           aria-label="Close"
                           className=" close"
