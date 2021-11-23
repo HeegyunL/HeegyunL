@@ -57,7 +57,7 @@ const diaryApi = {
 
   modify: (id: number, diaryItem: DiaryItemRequest) =>
     axios.put<DiaryItemResponse>(
-      `${process.env.NEXT_PUBLIC_API_BASE}/${id}`,
+      `${process.env.NEXT_PUBLIC_API_BASE}/diary/${id}`,
       diaryItem
     )
 };

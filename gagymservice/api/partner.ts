@@ -65,11 +65,11 @@ const partnerApi = {
   ),
   
   remove:(id:number) =>
-  axios.delete<boolean>(`${process.env.NEXT_PUBLIC_API_BASE}/${id}`),
+  axios.delete<boolean>(`${process.env.NEXT_PUBLIC_API_BASE}/partner/${id}`),
 
   modify :( id:number,partnerItem:PartnerItemRequest)=>
   axios.put<PartnerItemResponse>(
-    `${process.env.NEXT_PUBLIC_API_BASE}/${id}`,
+    `${process.env.NEXT_PUBLIC_API_BASE}/partner/${id}`,
     partnerItem
   )
 };
