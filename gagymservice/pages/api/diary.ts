@@ -12,7 +12,7 @@ export interface DiaryPagingResponse {
 export interface DiaryItemResponse {
   id: number;
   memberName: string;
-  diaryMorning: string;
+  diaryMorning: string; 
   diaryLunch: string;
   diaryDinner: string;
   diaryRoutine: string;
