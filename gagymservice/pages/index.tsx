@@ -81,7 +81,7 @@ const Index = () => {
                   </thead>
                   {partners.data.map((item, index) => (
                     <tbody key={`partners-item-${index}`}>
-                      <Link href={`/partner/information/detail/${item.id}}`}>
+                      <Link href={`/partner/information/detail/${item.id}`}>
                         <tr className="text-center my-2">
                           <td>{item.gymName}</td>
                         </tr>
@@ -114,13 +114,15 @@ const Index = () => {
                 </thead>
                 <tbody>
                   {reservations.data.map((item, index) => (
-                    <tr key={`partners-item-${index}`}>
-                      <td>{item.memberName}</td>
-                      <td>{item.gymName}</td>
-                      <td>{item.memberPhone}</td>
-                      <td>{item.boughtService}</td>
-                      <td>{item.trainerName}</td>
-                    </tr>
+                    <Link href={`/partner/ptDiary/detail/${item.id}`}>
+                      <tr key={`partners-item-${index}`}>
+                        <td>{item.memberName}</td>
+                        <td>{item.gymName}</td>
+                        <td>{item.memberPhone}</td>
+                        <td>{item.boughtService}</td>
+                        <td>{item.trainerName}</td>
+                      </tr>
+                    </Link>
                   ))}
                 </tbody>
               </table>
