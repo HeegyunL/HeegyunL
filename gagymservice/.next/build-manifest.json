@@ -34,6 +34,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/partner/information/list.js"
+    ],
+    "/partner/ptDiary/list": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/partner/ptDiary/list.js"
+    ],
+    "/partner/reservation/list": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/partner/reservation/list.js"
     ]
   },
   "ampFirstPages": []
