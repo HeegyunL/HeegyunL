@@ -1,13 +1,13 @@
 import axios from "axios";
 
-// export interface ReservationPagingResponse {
-//   content: ReservationItemResponse[];
-//   last: boolean;
-//   totalElements: number;
-//   totalPages: number;
-//   size: number;
-//   number: number;
-// }
+export interface ReservationPagingResponse {
+  content: ReservationItemResponse[];
+  last: boolean;
+  totalElements: number;
+  totalPages: number;
+  size: number;
+  number: number;
+}
 export interface ReservationItemResponse {
   id : number;
   memberName:string;
@@ -38,8 +38,8 @@ const reservationApi = {
   axios.get<ReservationItemResponse[]>(`http://52.79.120.222:8080/reservation`),
 
   fetchPaging: (page: number, size: number) =>
-    axios.get<ReservationItemResponse>(
-      `http://52.79.120.222:8080/reservation`
+    axios.get<ReservationPagingResponse>(
+      `http://52.79.120.222:8080/reservation/paging?page=${page}&size=${size}`
     ),
 
 

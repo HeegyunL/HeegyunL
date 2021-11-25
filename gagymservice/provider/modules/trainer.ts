@@ -9,15 +9,15 @@ export interface TrainerItem {
   trainerPhotoUrl:string;
   fileName:string;
   fileType :string;
-  pt1TimePrice?:string;
-  pt10TimePrice?:string;
-  pt30TimePrice?:string;
-  yoga1TimePrice?:string;
-  yoga10TimePrice?:string;
-  yoga30TimePrice?:string;
-  pilates1TimePrice?:string;
-  pilates10TimePrice?:string;
-  pilates30TimePrice?:string;
+  pt1TimePrice:string;
+  pt10TimePrice:string;
+  pt30TimePrice:string;
+  yoga1TimePrice:string;
+  yoga10TimePrice:string;
+  yoga30TimePrice:string;
+  pilates1TimePrice:string;
+  pilates10TimePrice:string;
+  pilates30TimePrice:string;
 }
 
 
@@ -28,6 +28,7 @@ interface TrainerState {
   data : TrainerItem[];
   isFetched : boolean;
   isAddCompleted? : boolean;
+  isRemoveCompleted?: boolean;
   isModifyCompleted? : boolean;
 
 }
@@ -55,6 +56,8 @@ const trainerSlice = createSlice({
     //complted 관련된 속성을 삭제함 (undefined 상태)
     initialCompleted : (state)=>{
       delete state.isAddCompleted;
+      delete state.isRemoveCompleted;
+      delete state.isModifyCompleted;
     }, 
     initialTrainerItem : (state, action: PayloadAction<TrainerItem>)=>{
       const trainer = action.payload;
@@ -64,6 +67,15 @@ const trainerSlice = createSlice({
       const trainer = action.payload;
       state.data = trainer;
       state.isFetched = true;
+    },
+    removeTrainer: (state, action: PayloadAction<number>) => {
+      const id = action.payload;
+      // id에 해당하는 아이템의 index를 찾고 그 index로 splice를 한다.
+      state.data.splice(
+        state.data.findIndex((item) => item.id === id),
+        1
+      );
+      state.isRemoveCompleted = true; // 삭제 되었음을 표시
     },
     modifyTrainer: (state, action: PayloadAction<TrainerItem>) => {
       // 생성해서 넘긴 객체
@@ -99,6 +111,7 @@ export const {
   initialCompleted,
   initialTrainerItem,
   initialTrainer,
-  modifyTrainer
+  modifyTrainer,
+  removeTrainer
 }= trainerSlice.actions;
 export default trainerSlice.reducer;

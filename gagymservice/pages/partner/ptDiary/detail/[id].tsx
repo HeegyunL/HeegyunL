@@ -4,7 +4,7 @@ import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../../../components/layout";
 import {
-  requestFetchDiarys,
+  requestFetchDiary,
   requestModifyDiary,
   requestRemoveDiary,
 } from "../../../../middleware/modules/diary";

@@ -22,7 +22,6 @@ public class Trainer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
 	private String gymCode;
 	private String trainerName;
 	private String trainerIntro;

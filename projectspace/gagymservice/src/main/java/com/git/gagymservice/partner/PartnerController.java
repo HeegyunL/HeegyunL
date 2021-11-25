@@ -60,32 +60,6 @@ public class PartnerController {
 		return partnerSaved;
 				
 	}
-	
-//	@GetMapping(value="partner/{id}")
-//	public Partner insertTrainer(@PathVariable long id, @RequestBody Partner partner,@RequestBody Trainer trainer, HttpServletResponse res)
-//			throws InterruptedException{
-//				Optional<Partner> partnerItem = repo.findById(id);
-//				Optional<Trainer> trainerItem = repo.findByGymCode(gymCode);
-//				
-//				Trainer trainerToSave = trainerItem.get();
-//				trainerToSave.setGymCode(trainer.getGymCode());
-//				trainerToSave.setTrainerName(trainer.getTrainerName());
-//				trainerToSave.setTrainerIntro(trainer.getTrainerIntro()); 
-//				trainerToSave.setTrainerPhotoUrl(trainer.getTrainerPhotoUrl());
-//				trainerToSave.setPt1TimePrice(trainer.getPilates1TimePrice());
-//				trainerToSave.setPt10TimePrice(trainer.getPilates10TimePrice());
-//				trainerToSave.setPt30TimePrice(trainer.getPilates30TimePrice());
-//				trainerToSave.setYoga1TimePrice(trainer.getYoga1TimePrice());
-//				trainerToSave.setYoga10TimePrice(trainer.getYoga10TimePrice());
-//				trainerToSave.setYoga30TimePrice(trainer.getYoga30TimePrice());
-//				trainerToSave.setPilates1TimePrice(trainer.getPilates1TimePrice());
-//				trainerToSave.setPilates10TimePrice(trainer.getPilates10TimePrice());
-//				trainerToSave.setPilates30TimePrice(trainer.getPilates30TimePrice());
-//				
-//				
-//				Partner = partnerItem.get();
-//				return Partner;
-//				}
 	@DeleteMapping(value = "/partner/{id}")
 	public boolean removePartner(@PathVariable long id, HttpServletResponse res) throws InterruptedException{
 		Optional<Partner> partner = repo.findById(id);

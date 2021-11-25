@@ -31,6 +31,7 @@ const Tcreate = () => {
 
   const partnerData = useSelector((state: RootState) => state.partner);
   const trainerData = useSelector((state: RootState) => state.trainer.data);
+  const TrainerData = useSelector((state: RootState) => state.trainer);
   const isAddCompleted = useSelector(
     (state: RootState) => state.trainer.isAddCompleted
   );
@@ -38,16 +39,9 @@ const Tcreate = () => {
 
   const router = useRouter();
 
-  // const id = router.query.id as string;
-
   useEffect(() => {
-    if (!partnerData.isFetched) {
-      dispatch(requestFetchPartner());
-    }
     console.log("--isAddCompleted 변경: " + isAddCompleted);
-    isAddCompleted &&
-      // router.push(`/partner/information/detail/${partnerData.data.find((item)=>item.id)}`);
-      router.push(`/partner/information/list`);
+    isAddCompleted && router.push(`/partner/information/list`);
   }, [isAddCompleted, router, dispatch]);
 
   const [url, setUrl] = useState<string | undefined>("");
@@ -77,7 +71,7 @@ const Tcreate = () => {
           "input[type=radio]:checked"
         ) as HTMLInputElement;
         console.log("gymcode");
-        console.log(radio.value);
+        // console.log(radio.value);
         const item: TrainerItem = {
           id: trainerData.length ? trainerData[0].id + 1 : 1,
           gymCode: radio.value,
@@ -120,7 +114,7 @@ const Tcreate = () => {
               ref={gymCodeRef}
             >
               {partnerData.data.map((item, index) => (
-                <div className="ms-2" key={`partner-item-${index}`}>
+                <div className="ms-2" key={item.id}>
                   <div className="form-check">
                     <input
                       className="form-check-input"

@@ -38,12 +38,11 @@ const Create = () => {
 
   useEffect(() => {
     console.log("--isAddCompleted 변경 :" + isAddCompleted);
-    isAddCompleted && router.push(`/partner/information/list`);
+    isAddCompleted && router.push(`/partner`);
   }, [isAddCompleted, router, dispatch]);
 
   const handleAddClick = () => {
     if (gymPhotoRef.current?.files?.length) {
-      // console.log(gymPhotoRef.current?.files?.length);
     }
     if (gymPhotoRef.current?.files?.length) {
       const imageFile = gymPhotoRef.current.files[0];
@@ -60,7 +59,6 @@ const Create = () => {
           gymTime: gymTimeRef.current?.value,
           gymService: gymServiceRef.current?.value,
           gymPhoto: reader.result ? reader.result?.toString() : "",
-          // gymPhoto: gymPhotoRef.current?.value,
           fileName: imageFile.name,
           fileType: imageFile.type,
           gym1DayPrice: gym1DayPriceRef.current?.value,

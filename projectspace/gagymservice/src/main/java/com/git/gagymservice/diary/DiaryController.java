@@ -34,9 +34,11 @@ public class DiaryController {
 	public List<Diary> getDiary() throws InterruptedException{
 		return repo.findAll(Sort.by("id").descending());
 	}
-	@GetMapping("/diarys/paging")
-	public Page<Diary> getDiaryPaging(@RequestParam int page, @RequestParam int size){
-		return repo.findAll(PageRequest.of(page,  size,Sort.by("id").descending()));
+	@GetMapping("/diary/paging")
+	public Page<Diary> getDiaryPaging(@RequestParam int page, @RequestParam int size) {
+		// findAll(Pageable page)
+		// findAll(PageRequest.of(page, size, Sort sort));
+		return repo.findAll(PageRequest.of(page, size, Sort.by("id").descending()));
 	}
 	@PostMapping(value="/diary")
 	public Diary addDiary(@RequestBody Diary diary, HttpServletResponse res) throws InterruptedException{

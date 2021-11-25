@@ -5,7 +5,7 @@ import { dataUrlToFile } from "../../lib/string";
 import fileApi from "../../api/file";
 import api,{ TrainerItemRequest, TrainerItemResponse } from "../../api/trainer";
 import { RootState } from "../../provider";
-import trainerReducer,{ addTrainer,  initialCompleted, initialTrainer, initialTrainerItem, modifyTrainer, TrainerItem } from "../../provider/modules/trainer";
+import trainerReducer,{ addTrainer,  initialCompleted, initialTrainer, initialTrainerItem, modifyTrainer, removeTrainer, TrainerItem } from "../../provider/modules/trainer";
 
 
 // saga action 생성 부분
@@ -161,28 +161,28 @@ const trainers = result.data.map(
     }
   }
 
-  // function* removeData(action:PayloadAction<number>){
-  //   yield console.log("--removeData--")
+  function* removeData(action:PayloadAction<number>){
+    yield console.log("--removeData--")
 
-  //   const id = action.payload;
+    const id = action.payload;
 
-    // // s3 파일 삭제
-    // const partnerItem : PartnerItem = yield select((state : RootState)=>
-    // state.partner.data.find((item)=>item.id===id)
-    // );
+    // s3 파일 삭제
+    const trainerItem : TrainerItem = yield select((state : RootState)=>
+    state.trainer.data.find((item)=>item.id===id)
+    );
 
-    // const urlArr=partnerItem.partnerUrl.split("/");
-    // const objectKey = urlArr[urlArr.length -1];
-    // //  ----------------
+    const urlArr=trainerItem.trainerPhotoUrl.split("/");
+    const objectKey = urlArr[urlArr.length -1];
+    //  ----------------
 
-    // const result : AxiosResponse<boolean> = yield call(api.remove, id);
-    // if(result.data){
-    //   yield put(removePartner(id));
-    // }
-    // yield put(initialCompleted());
+    const result : AxiosResponse<boolean> = yield call(api.remove, id);
+    if(result.data){
+      yield put(removeTrainer(id));
+    }
+    yield put(initialCompleted());
     
 
-    // }
+    }
   
 
 
@@ -224,7 +224,7 @@ const trainers = result.data.map(
       trainerIntro:result.data.trainerIntro,
       trainerPhotoUrl:result.data.trainerPhotoUrl,
       fileName:result.data.fileName,
-        fileType:result.data.fileType,
+      fileType:result.data.fileType,
       pt1TimePrice:result.data.pt1TimePrice,
       pt10TimePrice:result.data.pt10TimePrice,
       pt30TimePrice:result.data.pt30TimePrice,
@@ -250,7 +250,7 @@ export default function* trainerSaga(){
   yield takeLatest(requestFetchTrainer, fetchData);
   yield takeEvery(requestFetchTrainerItem, fetchData);
 
-  // yield takeEvery(requestRemoveTrainer, removeData);
+  yield takeEvery(requestRemoveTrainer, removeData);
 
   yield takeEvery(requestModifyTrainer, modifyData);
 }

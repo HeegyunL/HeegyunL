@@ -12,7 +12,7 @@ export interface DiaryPagingResponse {
 export interface DiaryItemResponse {
   id: number;
   memberName: string;
-  diaryMorning: string; 
+  diaryMorning: string;
   diaryLunch: string;
   diaryDinner: string;
   diaryRoutine: string;
@@ -31,17 +31,19 @@ export interface DiaryItemRequest {
   diaryRequest: string;
   trainerName: string;
   trainerFeedback: string;
-  //diaryCreateTime: number;
+  diaryCreateTime: number;
 }
-
 const diaryApi = {
+
+  get:(id:number)=>
+  axios.get<DiaryItemResponse[]>(`http://52.79.120.222:8080/diary/${id}`),
 
   fetch: () =>
   axios.get<DiaryItemResponse[]>(`http://52.79.120.222:8080/diary`),
 
   fetchPaging: (page: number, size: number) =>
     axios.get<DiaryPagingResponse>(
-      `http://52.79.120.222:8080/diary`
+      `http://52.79.120.222:8080/diary/paging?page=${page}&size=${size}`
     ),
 
 

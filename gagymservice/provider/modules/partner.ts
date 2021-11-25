@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TrainerItem } from "./trainer";
+
 
 
 export interface PartnerItem {
@@ -22,7 +22,6 @@ export interface PartnerItem {
   gym3MonthPrice : string;
   gym6MonthPrice : string;
   gymYearPrice : string;
-  // gymTrainer : TrainerItem[];
 }
 interface PartnerState {
   data : PartnerItem[];

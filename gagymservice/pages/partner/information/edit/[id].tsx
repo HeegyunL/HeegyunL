@@ -7,6 +7,7 @@ import { AppDispatch, RootState } from "../../../../provider";
 import { requestModifyPartner } from "../../../../middleware/modules/partner";
 import { requestModifyTrainer } from "../../../../middleware/modules/trainer";
 import { requestFetchTrainer } from "../../../../middleware/modules/trainer";
+import NavItem from "@restart/ui/esm/NavItem";
 
 const PartnerEdit = () => {
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -19,9 +20,6 @@ const PartnerEdit = () => {
   );
   const PartnerItem = useSelector((state: RootState) =>
     state.partner.data.find((item) => item.id === +id)
-  );
-  const TrainerItem = useSelector((state: RootState) =>
-    state.trainer.data.filter((item) => item.gymCode == PartnerItem?.gymCoNum)
   );
   const isModifyCompleted = useSelector(
     (state: RootState) => state.partner.isModifyCompleted
@@ -101,16 +99,14 @@ const PartnerEdit = () => {
       item.pilates30TimePrice = pilates30TimePriceRef.current?.value;
 
       dispatch(requestModifyTrainer(item));
-      router.push("/partner/information/list");
+      router.push(`/partner/information/edit/${id}`);
     }
   };
   const trainer = useSelector((state: RootState) => state.trainer);
 
-  useEffect(() => {
-    dispatch(requestFetchTrainer());
-    isModifyCompleted && router.push(`/partner/information/list`);
-  }, [dispatch, trainer.isFetched, isModifyCompleted, router]);
-
+  const trainers = trainer.data.filter(
+    (item) => item.gymCode == PartnerItem?.gymCoNum
+  );
   return (
     <Layout>
       {PartnerItem && (
@@ -257,25 +253,25 @@ const PartnerEdit = () => {
                 }}
                 className="d-flex"
               >
-                {TrainerItem.map((item, index) => (
-                  <div className="d-flex ms-2" key={index}>
-                    <Button
-                      color="primary"
-                      type="button"
-                      onClick={() => setModalOpen(!modalOpen)}
-                    >
-                      {item.trainerName}
-                    </Button>
-                    <Modal
-                      toggle={() => setModalOpen(!modalOpen)}
-                      isOpen={modalOpen}
-                    >
-                      <div className=" modal-header">
-                        <h5 className=" modal-title" id="exampleModalLabel">
-                          강사 소개
-                        </h5>
-                      </div>
-                      <ModalBody>
+                <div className="d-flex ms-2">
+                  <Button
+                    color="primary"
+                    type="button"
+                    onClick={() => setModalOpen(!modalOpen)}
+                  >
+                    강사정보
+                  </Button>
+                  <Modal
+                    toggle={() => setModalOpen(!modalOpen)}
+                    isOpen={modalOpen}
+                  >
+                    <div className=" modal-header">
+                      <h5 className=" modal-title" id="exampleModalLabel">
+                        강사 소개
+                      </h5>
+                    </div>
+                    {trainers.map((item, index) => (
+                      <ModalBody key={item.id}>
                         <div className="d-flex">
                           <p>이름 :</p>
                           <input
@@ -448,25 +444,29 @@ const PartnerEdit = () => {
                           </table>
                         </div>
                       </ModalBody>
-                      <ModalFooter>
-                        <Button
-                          color="secondary"
-                          type="button"
-                          onClick={() => setModalOpen(!modalOpen)}
-                        >
-                          Close
-                        </Button>
-                        <Button
-                          color="primary"
-                          type="button"
-                          onClick={() => trainerSaveClick()}
-                        >
-                          Save changes
-                        </Button>
-                      </ModalFooter>
-                    </Modal>
-                  </div>
-                ))}
+                    ))}
+                    <ModalFooter>
+                      <Button
+                        color="secondary"
+                        type="button"
+                        onClick={() => setModalOpen(!modalOpen)}
+                      >
+                        Close
+                      </Button>
+                      <Button
+                        color="primary"
+                        type="button"
+                        onClick={() => {
+                          trainerSaveClick();
+                          router.push(`/partner/information/edit/${id}`),
+                            setModalOpen(!modalOpen);
+                        }}
+                      >
+                        Save changes
+                      </Button>
+                    </ModalFooter>
+                  </Modal>
+                </div>
               </p>
             </div>
             {/* 가격 */}

@@ -2,10 +2,10 @@ import axios from "axios";
 
 const fileApi ={
   upload: (formFile: FormData)=>
-  axios.post<string>(`${process.env.NEXT_PUBLIC_FILE_BASE}/files`, formFile,{
+  axios.post<string>(`http://localhost:8081/files`, formFile,{
     headers:{"content-type":"multipart/form-data"},
   }),
   remove: (objectKey:string)=>
-  axios.delete(`${process.env.NEXT_PUBLIC_FILE_BASE}/files/${objectKey}`),
+  axios.delete(`http://15.164.54.15:8081/files/${objectKey}`),
 }
 export default fileApi;

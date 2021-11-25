@@ -1,0 +1,14 @@
+package com.git.service3;
+
+
+@RestController
+public class TestController {
+
+	@GetMapping(value = "/test")
+	public String test() {
+		System.out.println("--service 3--");
+		return "3";
+
+	}
+
+}

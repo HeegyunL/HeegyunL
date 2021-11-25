@@ -198,34 +198,40 @@ const PartnerDetail = () => {
                 }}
                 className="d-flex"
               >
-                {trainers.map((item, index) => (
-                  <div className="d-flex ms-2" key={index}>
-                    <Button
-                      name={item.trainerName}
-                      color="primary"
-                      type="button"
-                      onClick={() => setModalOpen(!modalOpen)}
-                    >
-                      {item.trainerName}
-                    </Button>
-                    <Modal
-                      toggle={() => setModalOpen(!modalOpen)}
-                      isOpen={modalOpen}
-                    >
-                      <div className=" modal-header">
-                        <h5 className=" modal-title">강사 소개</h5>
-                        <button
-                          aria-label="Close"
-                          className=" close"
-                          type="button"
-                          onClick={() => setModalOpen(!modalOpen)}
-                        >
-                          <span aria-hidden={true}>×</span>
-                        </button>
-                      </div>
+                <div className="d-flex ms-2">
+                  <Button
+                    // name={item.trainerName}
+                    color="primary"
+                    type="button"
+                    onClick={() => setModalOpen(!modalOpen)}
+                  >
+                    강사소개
+                  </Button>
+                  <Modal
+                    toggle={() => setModalOpen(!modalOpen)}
+                    isOpen={modalOpen}
+                  >
+                    <div className=" modal-header">
+                      <h5 className=" modal-title">강사 소개</h5>
+                      <button
+                        aria-label="Close"
+                        className=" close"
+                        type="button"
+                        onClick={() => setModalOpen(!modalOpen)}
+                      >
+                        <span aria-hidden={true}>×</span>
+                      </button>
+                    </div>
 
-                      <ModalBody>
-                        <div className="">
+                    {trainers.map((item, index) => (
+                      <ModalBody key={item.id} style={{ width: "100%" }}>
+                        <div
+                          className=""
+                          style={{
+                            borderBottomStyle: "dotted",
+                            borderBottomWidth: "1px",
+                          }}
+                        >
                           <div className="d-flex">
                             <p>이름 :</p>
                             <p>{item.trainerName}</p>
@@ -236,70 +242,122 @@ const PartnerDetail = () => {
                           </div>
                           <div className="d-flex">
                             <img
-                              style={{ width: "150px", height: "150px" }}
+                              style={{
+                                width: "150px",
+                                height: "150px",
+                                borderStyle: "solid",
+                                borderWidth: "1px",
+                                borderColor: "gray",
+                                boxShadow: "2px 3px 5px 0px",
+                              }}
                               src={item.trainerPhotoUrl}
                               alt="TrainerPhoto"
                             />
+                            <table
+                              className="table ms-2"
+                              style={{
+                                borderStyle: "solid",
+                                borderWidth: "3px",
+                                width: "100%",
+                              }}
+                            >
+                              <thead>
+                                <tr>
+                                  <th className="text-center me-3" scope="col">
+                                    <h3>-</h3>
+                                  </th>
+                                  <th className="text-center" scope="col">
+                                    1Time
+                                  </th>
+                                  <th className="text-center" scope="col">
+                                    10Time
+                                  </th>
+                                  <th className="text-center" scope="col">
+                                    30Time
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr className="mt-5">
+                                  <td className="text-center">
+                                    <h5>PT</h5>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt1TimePrice}
+                                    </p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt10TimePrice}
+                                    </p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt30TimePrice}
+                                    </p>
+                                  </td>
+                                </tr>
+                                <tr className="mt-5">
+                                  <td className="text-center">
+                                    <h5>요가</h5>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt1TimePrice}
+                                    </p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt10TimePrice}
+                                    </p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt30TimePrice}
+                                    </p>
+                                  </td>
+                                </tr>
+                                <tr className="mt-5">
+                                  <td className="text-center text-nowrap">
+                                    <h5>필라테스</h5>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt1TimePrice}
+                                    </p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt10TimePrice}
+                                    </p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt30TimePrice}
+                                    </p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
                           </div>
                         </div>
-                        <div className="d-flex">
-                          <table className="table">
-                            <thead>
-                              <tr>
-                                <th className="text-center me-3" scope="col">
-                                  <h3>-</h3>
-                                </th>
-                                <th className="text-center" scope="col">
-                                  1Time
-                                </th>
-                                <th className="text-center" scope="col">
-                                  10Time
-                                </th>
-                                <th className="text-center" scope="col">
-                                  30Time
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr className="mt-5">
-                                <td className="text-center">
-                                  <h5>PT</h5>
-                                </td>
-                                <td>
-                                  <p className="text-center">
-                                    {item.pt1TimePrice}
-                                  </p>
-                                </td>
-                                <td>
-                                  <p className="text-center">
-                                    {item.pt10TimePrice}
-                                  </p>
-                                </td>
-                                <td>
-                                  <p className="text-center">
-                                    {item.pt30TimePrice}
-                                  </p>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
                       </ModalBody>
-                      <ModalFooter>
-                        <Button
-                          color="secondary"
-                          type="button"
-                          onClick={() => setModalOpen(!modalOpen)}
-                        >
-                          Close
-                        </Button>
-                        <Button color="primary" type="button">
-                          Save changes
-                        </Button>
-                      </ModalFooter>
-                    </Modal>
-                  </div>
-                ))}
+                    ))}
+                    <ModalFooter>
+                      <Button
+                        color="secondary"
+                        type="button"
+                        onClick={() => setModalOpen(!modalOpen)}
+                      >
+                        Close
+                      </Button>
+                      <Button color="primary" type="button">
+                        Save changes
+                      </Button>
+                    </ModalFooter>
+                  </Modal>
+                </div>
               </p>
             </div>
             {/* 가격 */}

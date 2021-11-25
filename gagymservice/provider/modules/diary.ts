@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-
-
 export interface DiaryItem {
   id: number;
   memberName: string;
@@ -10,13 +8,11 @@ export interface DiaryItem {
   diaryDinner: string;
   diaryRoutine: string;
   diaryRequest: string;
-  trainerName:string;
+  trainerName: string;
   trainerFeedback: string;
-  diaryCreateTime?: number;
+  diaryCreateTime : number;
   isEdit?: boolean;
 }
-
-
 
 export interface DiaryPage {
   data: DiaryItem[];
@@ -26,10 +22,11 @@ export interface DiaryPage {
   pageSize: number;
   isLast: boolean;
 }
-interface DiaryState {
-  data : DiaryItem[];
-  isFetched : boolean;
-  isAddCompleted? : boolean;
+
+interface diaryState {
+  data: DiaryItem[];
+  isFetched: boolean;
+  isAddCompleted?: boolean;
   isRemoveCompleted?: boolean; 
   isModifyCompleted?: boolean;
   totalElements?: number;
@@ -39,26 +36,13 @@ interface DiaryState {
   isLast?: boolean;
 }
 
-const initialState : DiaryState ={
-  data: [
-    {
-      id: 1,
-  memberName: "이희균",
-  diaryMorning: "사과1쪽",
-  diaryLunch: "부대찌게",
-  diaryDinner: "삼겹살2인분",
-  diaryRoutine: "pt1시간 , 스쿼트100회",
-  diaryRequest: "술먹고 운동해도 되요?",
-  trainerName:"한동기",
-  trainerFeedback: "안됩니다",
-    },
-  ],
+const initialState: diaryState = {
+  data: [],
   isFetched: false,
   page: 0,
   pageSize: 5,
   totalPages: 0,
-}
-
+};
 
 const diarySlice = createSlice({
   name: "diary",
@@ -96,21 +80,37 @@ const diarySlice = createSlice({
         diaryItem.diaryDinner = modifyItem.diaryDinner;
         diaryItem.diaryRoutine = modifyItem.diaryRoutine;
         diaryItem.diaryRequest = modifyItem.diaryRequest;
+        diaryItem.trainerName = modifyItem.trainerName;
         diaryItem.trainerFeedback = modifyItem.trainerFeedback;
         diaryItem.diaryCreateTime = modifyItem.diaryCreateTime;
-
       }
            state.isModifyCompleted = true;
     },
-
+   initialDiaryItem: (state, action: PayloadAction<DiaryItem>) => {
+      const diary = action.payload;
+      state.data = [{ ... diary }];
+    },
     initialDiary: (state, action: PayloadAction<DiaryItem[]>) => {
-      const diarys = action.payload;
-      state.data = diarys;
+      const diary = action.payload;
+      state.data = diary;
       state.isFetched = true;
+    },
+        addTotalpages: (state) => {
+      state.totalPages++;
     },
     initialPagedDiary: (state, action: PayloadAction<DiaryPage>) => {
 
       state.data = action.payload.data;
+      state.totalElements = action.payload.totalElements;
+      state.totalPages = action.payload.totalPages;
+      state.page = action.payload.page;
+      state.pageSize = action.payload.pageSize;
+      state.isLast = action.payload.isLast;
+      state.isFetched = true;
+    },
+        initialNextDiary: (state, action: PayloadAction<DiaryPage>) => {
+
+      state.data = state.data.concat(action.payload.data);
       state.totalElements = action.payload.totalElements;
       state.totalPages = action.payload.totalPages;
       state.page = action.payload.page;
@@ -124,10 +124,12 @@ const diarySlice = createSlice({
 export const { 
   addDiary, 
   removeDiary, 
-  modifyDiary,  
+  modifyDiary,
+  initialDiaryItem,
   initialDiary,
   initialCompleted,
   initialPagedDiary,
+  initialNextDiary,
 } = diarySlice.actions;
 
 

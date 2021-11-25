@@ -1,12 +1,14 @@
 package com.git.gagymservice.reservation;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ReservationService {
 	ReservationRepository repo;
-	
 	
 	public ReservationService(ReservationRepository repo) {
 		this.repo = repo;
@@ -32,5 +34,9 @@ public class ReservationService {
 		repo.save(saveReservation);
 		return saveReservation;
 	}
+	
+	 
+	
+
 	
 }

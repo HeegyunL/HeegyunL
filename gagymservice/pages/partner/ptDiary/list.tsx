@@ -1,16 +1,13 @@
-import NavItem from "@restart/ui/esm/NavItem";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../../components/layout";
 import {
-  requestFetchDiarys,
-  requestFetchPagingDiarys,
+  requestFetchNextDiary,
+  requestFetchPagingDiary,
 } from "../../../middleware/modules/diary";
-import { requestFetchPartnerItem } from "../../../middleware/modules/partner";
 import { AppDispatch, RootState } from "../../../provider";
-import { DiaryItemResponse } from "../../../api/diary";
+import styles from "../../../styles/Diarylist.module.css";
 
 const getTimeString = (unixtime: number) => {
   const dateTime = new Date(unixtime);
@@ -23,34 +20,34 @@ const List = () => {
   const diary = useSelector((state: RootState) => state.diary);
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
-    // if (!diary.isFetched) {
-    //   dispatch(
-    //     requestFetchPagingDiarys({
-    //       page: 0,
-    //       size: diary.pageSize,
-    //     })
-    //   );
-    // }
     if (!diary.isFetched) {
-      dispatch(requestFetchDiarys());
+      const diaryPageSize = localStorage.getItem("diary_page_size");
+
+      dispatch(
+        requestFetchPagingDiary({
+          page: 0,
+          size: diaryPageSize ? +diaryPageSize : diary.pageSize,
+        })
+      );
     }
   }, [dispatch, diary.isFetched, diary.pageSize]);
 
-  // const handlePageChanged = (page: number) => {
-  //   console.log("--page: " + page);
-  //   dispatch(
-  //     requestFetchPagingDiarys({
-  //       page,
-  //       size: diary.pageSize,
-  //     })
-  //   );
-  // };
+  const handlePageChanged = (page: number) => {
+    console.log("--page: " + page);
+    dispatch(
+      requestFetchPagingDiary({
+        page,
+        size: diary.pageSize,
+      })
+    );
+  };
 
   const handlePageSizeChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
     console.log(e.currentTarget.value);
     dispatch(
-      requestFetchPagingDiarys({
+      requestFetchPagingDiary({
         page: diary.page,
         size: +e.currentTarget.value,
       })
@@ -58,55 +55,55 @@ const List = () => {
   };
 
   return (
-    <Layout>
-      <div>
-        <body>
-          <div className=" mt-4" style={{ width: "80%", marginLeft: "0px" }}>
-            <h4 className=" float-start">PT 일지</h4>
-            <div className="d-flex justify-content-end align-items-center">
-              {/*-----------------*/}
-              {/*
-                <button
-                  className="btn btn-secondary btn-sm"
-                  style={{ width: "100px;" }}
-                  onClick={() => {
-                    dispatch(requestFetchDiarys());
+    <div>
+      <Layout>
+        <main className={styles.main}>
+          <div className={styles.div}>
+            {/*>PT일지 목록*/}
+            <div>
+              <div className="mx-auto">
+                <div className="d-flex flex-direction-column align-items-baseline mt-5">
+                  <p className={styles.p}>PT일지 목록</p>
+                </div>
+                <div className="d-flex"></div>
+              </div>
+
+              <div className="d-flex justify-content-end align-items-center">
+                <select
+                  className="form-select form-select-sm mx-1 p-1"
+                  style={{ width: "55px", height: "30px" }}
+                  onChange={(e) => {
+                    handlePageSizeChanged(e);
                   }}
                 >
-                  <i className="bi bi-arrow-clockwise"></i>
-                </button>
-                */}
-              <select
-                className="form-select form-select-sm mx-1 p-1"
-                style={{ width: "55px", height: "30px" }}
-                onChange={(e) => {
-                  handlePageSizeChanged(e);
-                }}
-              >
-                {[3, 5, 10, 20].map((size, index) => (
-                  <option
-                    value={size}
-                    selected={diary.pageSize === size}
-                    key={index}
-                  >
-                    {size}
-                  </option>
-                ))}
-              </select>
+                  {[3, 5, 10, 30].map((size, index) => (
+                    <option
+                      value={size}
+                      selected={diary.pageSize === size}
+                      key={index}
+                    >
+                      {size}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
-            <table className="table" style={{ width: "1025px" }}>
-              <thead>
+            <table className="table table-hover">
+              <thead className="display-flex;">
                 <tr>
-                  <th scope="col">일자</th>
-                  <th scope="col">회원명</th>
-                  <th scope="col">식단내용</th>
-                  <th scope="col">운동내용</th>
-                  <th scope="col">문의사항</th>
-                  <th scope="col">담당강사</th>
-                  <th scope="col">강사피드백</th>
+                  <th>날짜</th>
+                  <th>회원명</th>
+                  <th>아침식단</th>
+                  <th>점심식단</th>
+                  <th>저녁식단</th>
+                  <th>운동내역</th>
+                  <th>문의사항</th>
+                  <th>담당 강사</th>
+                  <th style={{ color: "red" }}>강사 피드백</th>
                 </tr>
               </thead>
-              <tbody>
+
+              <tbody className="tbody">
                 {diary.data.map((item, index) => (
                   <tr
                     key={index}
@@ -114,22 +111,50 @@ const List = () => {
                       router.push(`/partner/ptDiary/detail/${item.id}`);
                     }}
                   >
-                    <td>{item.diaryCreateTime}</td>
-                    <td>{item.memberName}</td>
-                    <td>{item.diaryMorning}</td>
-                    <td>{item.diaryRoutine}</td>
-                    <td>{item.diaryRequest}</td>
-                    <td>{item.trainerName}</td>
-                    <td>{item.trainerFeedback}</td>
+                    <td
+                      style={{ cursor: "pointer", color: "rgb(3, 48, 129)" }}
+                      className={styles.textd}
+                      key={index}
+                    >
+                      <b>{getTimeString(item.diaryCreateTime)}</b>
+                    </td>
+                    <td className={styles.text}>{item.memberName}</td>
+                    <td className={styles.text}>{item.diaryMorning}</td>
+                    <td className={styles.text}>{item.diaryLunch}</td>
+                    <td className={styles.text}>{item.diaryDinner}</td>
+                    <td className={styles.text}>{item.diaryRoutine}</td>
+                    <td className={styles.text}>{item.diaryRequest}</td>
+                    <td className={styles.text}>{item.trainerName}</td>
+                    <td className={styles.text} style={{ color: "red" }}>
+                      {item.trainerFeedback}
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
+            {!diary.isLast && (
+              <div className="d-flex justify-content-center mt-4">
+                <a
+                  href="#!"
+                  onClick={(e) => {
+                    e.preventDefault(); // 기본 동작 방지
+                    dispatch(
+                      requestFetchNextDiary({
+                        page: diary.page + 1,
+                        size: diary.pageSize,
+                      })
+                    );
+                  }}
+                  className="link-secondary fs-6 text-nowrap"
+                >
+                  더보기
+                </a>
+              </div>
+            )}
           </div>
-        </body>
-      </div>
-    </Layout>
+        </main>
+      </Layout>
+    </div>
   );
 };
-
 export default List;

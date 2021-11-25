@@ -14,33 +14,33 @@ export interface ReservationItem {
 
 
 
-// export interface ReservationPage {
-//   data: ReservationItem[];
-//   totalElements: number;
-//   totalPages: number;
-//   page: number;
-//   pageSize: number;
-//   isLast: boolean;
-// }
+export interface ReservationPage {
+  data: ReservationItem[];
+  totalElements: number;
+  totalPages: number;
+  page: number;
+  pageSize: number;
+  isLast: boolean;
+}
 interface ReservationState {
   data : ReservationItem[];
   isFetched : boolean;
   isAddCompleted? : boolean;
   isRemoveCompleted?: boolean; 
   isModifyCompleted?: boolean;
-  // totalElements?: number;
-  // totalPages: number;
-  // page: number;
-  // pageSize: number;
-  // isLast?: boolean;
+  totalElements?: number;
+  totalPages: number;
+  page: number;
+  pageSize: number;
+  isLast?: boolean;
 }
 
 const initialState : ReservationState ={
   data: [],
   isFetched: false,
-  // page: 0,
-  // pageSize: 5,
-  // totalPages: 0,
+  page: 0,
+  pageSize: 5,
+  totalPages: 0,
 }
 
 
@@ -90,16 +90,29 @@ const reservationSlice = createSlice({
       state.data = reservations;
       state.isFetched = true;
     },
-    // initialPagedReservation: (state, action: PayloadAction<ReservationPage>) => {
+    addTotalpages: (state) => {
+      state.totalPages++;
+    },
+    initialPagedReservation: (state, action: PayloadAction<ReservationPage>) => {
 
-    //   state.data = action.payload.data;
-    //   state.totalElements = action.payload.totalElements;
-    //   state.totalPages = action.payload.totalPages;
-    //   state.page = action.payload.page;
-    //   state.pageSize = action.payload.pageSize;
-    //   state.isLast = action.payload.isLast;
-    //   state.isFetched = true;
-    // },
+      state.data = action.payload.data;
+      state.totalElements = action.payload.totalElements;
+      state.totalPages = action.payload.totalPages;
+      state.page = action.payload.page;
+      state.pageSize = action.payload.pageSize;
+      state.isLast = action.payload.isLast;
+      state.isFetched = true;
+    },
+    initialNextReservation: (state, action: PayloadAction<ReservationPage>) => {
+
+      state.data = state.data.concat(action.payload.data);
+      state.totalElements = action.payload.totalElements;
+      state.totalPages = action.payload.totalPages;
+      state.page = action.payload.page;
+      state.pageSize = action.payload.pageSize;
+      state.isLast = action.payload.isLast;
+      state.isFetched = true;
+    },
   },
 });
 
@@ -109,7 +122,8 @@ export const {
   modifyReservation,  
   initialReservation,
   initialCompleted,
-  // initialPagedReservation,
+  initialPagedReservation,
+  initialNextReservation
 } = reservationSlice.actions;
 
 
