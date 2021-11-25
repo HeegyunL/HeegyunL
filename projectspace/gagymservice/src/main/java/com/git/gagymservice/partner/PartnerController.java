@@ -50,7 +50,7 @@ public class PartnerController {
 				.fileName(partner.getFileName())
 				.gym1DayPrice(partner.getGym1DayPrice())
 				.gym3DayPrice(partner.getGym3DayPrice()).gym7DayPrice(partner.getGym7DayPrice())
-				.gym3MonthPrice(partner.getGymMonthPrice()).gym3MonthPrice(partner.getGym3MonthPrice()).gym6MonthPrice(partner.getGym6MonthPrice())
+				.gymMonthPrice(partner.getGymMonthPrice()).gym3MonthPrice(partner.getGym3MonthPrice()).gym6MonthPrice(partner.getGym6MonthPrice())
 				.gymYearPrice(partner.getGymYearPrice())
 				.build();
 		

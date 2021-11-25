@@ -37,15 +37,14 @@ const PartnerDetail = () => {
   const [modalOpen, setModalOpen] = React.useState(false);
   const trainer = useSelector((state: RootState) => state.trainer);
 
-  useEffect(() => {
-    dispatch(requestFetchTrainer());
-    isRemoveCompleted && router.push(`/partner/information/list`);
-  }, [dispatch, trainer.isFetched, isRemoveCompleted, router]);
-
   const handleDeleteClick = () => {
     dispatch(requestRemovePartner(+id));
     router.push(`/partner/information/list`);
   };
+  useEffect(() => {
+    dispatch(requestFetchTrainer());
+    isRemoveCompleted && router.push(`/partner/information/list`);
+  }, [dispatch, trainer.isFetched, isRemoveCompleted, router]);
 
   const trainers = trainer.data.filter(
     (item) => item.gymCode == partners?.gymCoNum
@@ -208,11 +207,12 @@ const PartnerDetail = () => {
                     강사소개
                   </Button>
                   <Modal
+                    style={{ width: "700px" }}
                     toggle={() => setModalOpen(!modalOpen)}
                     isOpen={modalOpen}
                   >
                     <div className=" modal-header">
-                      <h5 className=" modal-title">강사 소개</h5>
+                      <p className=" modal-title">강사 소개</p>
                       <button
                         aria-label="Close"
                         className=" close"
@@ -224,7 +224,7 @@ const PartnerDetail = () => {
                     </div>
 
                     {trainers.map((item, index) => (
-                      <ModalBody key={item.id} style={{ width: "100%" }}>
+                      <ModalBody key={item.id}>
                         <div
                           className=""
                           style={{
@@ -263,9 +263,7 @@ const PartnerDetail = () => {
                             >
                               <thead>
                                 <tr>
-                                  <th className="text-center me-3" scope="col">
-                                    <h3>-</h3>
-                                  </th>
+                                  <th className="text-center" scope="col"></th>
                                   <th className="text-center" scope="col">
                                     1Time
                                   </th>
@@ -278,9 +276,9 @@ const PartnerDetail = () => {
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr className="mt-5">
+                                <tr className="">
                                   <td className="text-center">
-                                    <h5>PT</h5>
+                                    <p>PT</p>
                                   </td>
                                   <td>
                                     <p className="text-center">
@@ -298,9 +296,9 @@ const PartnerDetail = () => {
                                     </p>
                                   </td>
                                 </tr>
-                                <tr className="mt-5">
+                                <tr className="">
                                   <td className="text-center">
-                                    <h5>요가</h5>
+                                    <p>요가</p>
                                   </td>
                                   <td>
                                     <p className="text-center">
@@ -318,9 +316,9 @@ const PartnerDetail = () => {
                                     </p>
                                   </td>
                                 </tr>
-                                <tr className="mt-5">
+                                <tr className="">
                                   <td className="text-center text-nowrap">
-                                    <h5>필라테스</h5>
+                                    <p>필라테스</p>
                                   </td>
                                   <td>
                                     <p className="text-center">
@@ -389,7 +387,7 @@ const PartnerDetail = () => {
                   <tbody>
                     <tr className="">
                       <th className="text-center" scope="row">
-                        <h5>헬스장</h5>
+                        <p>헬스장</p>
                       </th>
                       <td>
                         <p className="text-center">{partners.gym1DayPrice}</p>
@@ -420,7 +418,7 @@ const PartnerDetail = () => {
                   <tbody>
                     <tr className="justify-content-between">
                       <td className="text-center text-nowrap">
-                        <h5>헬스장</h5>
+                        <p>헬스장</p>
                       </td>
                       <td>
                         <p className="text-center">{partners.gymMonthPrice}</p>
