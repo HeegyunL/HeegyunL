@@ -13,8 +13,8 @@ ssh -i "/Users/hee/Documents/keys/gagymservice.pem" ubuntu@ec2-52-79-120-222.ap-
 @rem ===== 2. 키파일명 myworkspace.pem 제외하고 "myworkspace" 이것을 프로젝트명으로 바꿈  
 
 @rem ===== 1. 빌드된 jar파일을 서버에 전송
-scp -i "/Users/hee/Documents/keys/gagymservice.pem" -r /Users/hee/Documents/Project/projectspace/gagymservice/build/libs/*.jar ubuntu@ec2-52-79-120-222.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/web/gagymservice
+scp -i "/Users/hee/Documents/keys/gagymservice.pem" -r /Users/hee/Documents/Project/projectspace/gagymservice/build/libs/*.jar ubuntu@ec2-52-79-120-222.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/app/gagymservice
 @rem ===== 2. 기존 프로세스 종료
 ssh -i "/Users/hee/Documents/keys/gagymservice.pem" ubuntu@ec2-52-79-120-222.ap-northeast-2.compute.amazonaws.com "pkill -9 -f java"
 @rem ===== 3. dev프로필로 jar 파일 실행
-ssh -i "/Users/hee/Documents/keys/gagymservice.pem" ubuntu@ec2-52-79-120-222.ap-northeast-2.compute.amazonaws.com "cd /home/ubuntu/web/gagymservice; nohup java -Dspring.profiles.active=dev -jar gagymservice*.jar 1>gagymservice.log 2>&1 &"
+ssh -i "/Users/hee/Documents/keys/gagymservice.pem" ubuntu@ec2-52-79-120-222.ap-northeast-2.compute.amazonaws.com "cd /home/ubuntu/app/gagymservice; nohup java -Dspring.profiles.active=dev -jar gagymservice*.jar 1>gagymservice.log 2>&1 &"

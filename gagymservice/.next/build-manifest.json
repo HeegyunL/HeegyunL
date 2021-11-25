@@ -15,6 +15,11 @@
     "static/development/_middlewareManifest.js"
   ],
   "pages": {
+    "/": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/index.js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -25,20 +30,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/partner/information/edit/[id]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/partner/information/edit/[id].js"
-    ],
     "/partner/information/list": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/partner/information/list.js"
-    ],
-    "/partner/reservation/detail/[id]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/partner/reservation/detail/[id].js"
     ],
     "/partner/reservation/list": [
       "static/chunks/webpack.js",
