@@ -9961,3 +9961,15 @@ Java Model Exception: Java Model Status [statsReservation(long) [in ReservationR
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-27 14:32:25.602
 !MESSAGE executing callback sts4.classpath.kOYSgkOU SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-27 16:35:50.645
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.kOYSgkOU
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-27 16:35:50.656
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.kOYSgkOU
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-27 16:35:50.658
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-27 16:35:50.658
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.kOYSgkOU => OK
