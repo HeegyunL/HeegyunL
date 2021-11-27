@@ -44,7 +44,6 @@ const Index = () => {
   return (
     <Layout>
       <div>
-        <header></header>
         <body>
           <div className="mx-auto" style={{ width: "850px" }}>
             <div className="justify-content-md-end">
