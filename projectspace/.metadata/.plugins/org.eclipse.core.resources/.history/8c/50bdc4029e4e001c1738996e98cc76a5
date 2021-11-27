@@ -1,0 +1,33 @@
+package com.git.gagymservice.reservation;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.querydsl.core.types.Projections;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+
+import static com.git.gagymservice.reservation.QReservation.reservation;
+import static com.git.gagymservice.reservation.QReservationDetail.reservationDetail;;
+
+@Repository
+public class ReservationRepositorySupport {
+	private JPAQueryFactory query;
+	
+	@Autowired
+	public ReservationRepositorySupport(EntityManager em) {
+		this.query = new JPAQueryFactory(em);
+	}
+	
+	public List<AmountByCategory> statsAmountsByCategories(String trainerName) {
+		
+	return query.select(Projections.fields(AmountByCategory.class,reservation.trainerName,
+			reservation.count()))
+			.from(reservation)
+			.groupBy(reservation.trainerName)
+			.fetch();
+	}	
+}

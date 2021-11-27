@@ -1,9 +1,14 @@
 package com.git.gagymservice.reservation;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,6 +31,16 @@ public class Reservation {
 	private String gymName;
 	private String trainerName;
 	private String boughtService;
-	private Integer requestReservationId;
+	
+	private String category;
+	
+	@OneToMany
+	@JoinColumn(name="salesOrderId")
+	private List<ReservationDetail> details;
+	
+	private String status;
+	
+	
+
 	
 }

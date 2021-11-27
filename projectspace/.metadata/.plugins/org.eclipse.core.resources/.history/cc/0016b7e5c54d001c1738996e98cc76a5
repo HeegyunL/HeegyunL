@@ -1,0 +1,11 @@
+package com.git.gagymservice.chart;
+
+import java.util.List;
+
+import lombok.Data;
+
+@Data
+public class AmountStat {
+	private Long amounts;
+	private List<AmountByCategory> amountByCategory;
+}

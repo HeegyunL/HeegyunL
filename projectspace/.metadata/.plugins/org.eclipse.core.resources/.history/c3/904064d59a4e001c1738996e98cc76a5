@@ -1,0 +1,73 @@
+package com.git.gagymservice.partner;
+
+import static com.querydsl.core.types.PathMetadataFactory.*;
+
+import com.querydsl.core.types.dsl.*;
+
+import com.querydsl.core.types.PathMetadata;
+import javax.annotation.processing.Generated;
+import com.querydsl.core.types.Path;
+
+
+/**
+ * QPartner is a Querydsl query type for Partner
+ */
+@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+public class QPartner extends EntityPathBase<Partner> {
+
+    private static final long serialVersionUID = -985689103L;
+
+    public static final QPartner partner = new QPartner("partner");
+
+    public final StringPath fileName = createString("fileName");
+
+    public final StringPath fileType = createString("fileType");
+
+    public final StringPath gym1DayPrice = createString("gym1DayPrice");
+
+    public final StringPath gym3DayPrice = createString("gym3DayPrice");
+
+    public final StringPath gym3MonthPrice = createString("gym3MonthPrice");
+
+    public final StringPath gym6MonthPrice = createString("gym6MonthPrice");
+
+    public final StringPath gym7DayPrice = createString("gym7DayPrice");
+
+    public final StringPath gymAddress = createString("gymAddress");
+
+    public final StringPath gymCoNum = createString("gymCoNum");
+
+    public final StringPath gymLocateGunGu = createString("gymLocateGunGu");
+
+    public final StringPath gymLocateSi = createString("gymLocateSi");
+
+    public final StringPath gymMonthPrice = createString("gymMonthPrice");
+
+    public final StringPath gymName = createString("gymName");
+
+    public final StringPath gymPhoneNum = createString("gymPhoneNum");
+
+    public final StringPath gymPhoto = createString("gymPhoto");
+
+    public final StringPath gymService = createString("gymService");
+
+    public final StringPath gymTime = createString("gymTime");
+
+    public final StringPath gymYearPrice = createString("gymYearPrice");
+
+    public final NumberPath<Long> id = createNumber("id", Long.class);
+
+    public QPartner(String variable) {
+        super(Partner.class, forVariable(variable));
+    }
+
+    public QPartner(Path<? extends Partner> path) {
+        super(path.getType(), path.getMetadata());
+    }
+
+    public QPartner(PathMetadata metadata) {
+        super(Partner.class, metadata);
+    }
+
+}
+

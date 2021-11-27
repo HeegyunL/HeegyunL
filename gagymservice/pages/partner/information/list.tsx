@@ -8,8 +8,8 @@ import { AppDispatch, RootState } from "../../../provider";
 // import styles from "../../../styles/"
 import Chart from "react-apexcharts";
 import { stringify } from "querystring";
-import columnBar from "../../../components/chart/columnBar";
-import ColumnBar from "../../../components/chart/columnBar";
+import columnBar from "../../../components/chart/AmountsByCategories";
+import ColumnBar from "../../../components/chart/AmountsByCategories";
 import axios from "axios";
 
 const List = () => {

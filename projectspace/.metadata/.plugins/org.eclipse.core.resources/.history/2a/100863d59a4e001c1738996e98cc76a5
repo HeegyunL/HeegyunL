@@ -1,0 +1,57 @@
+package com.git.gagymservice.diary;
+
+import static com.querydsl.core.types.PathMetadataFactory.*;
+
+import com.querydsl.core.types.dsl.*;
+
+import com.querydsl.core.types.PathMetadata;
+import javax.annotation.processing.Generated;
+import com.querydsl.core.types.Path;
+
+
+/**
+ * QDiary is a Querydsl query type for Diary
+ */
+@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+public class QDiary extends EntityPathBase<Diary> {
+
+    private static final long serialVersionUID = 1219145639L;
+
+    public static final QDiary diary = new QDiary("diary");
+
+    public final NumberPath<Long> diaryCreateTime = createNumber("diaryCreateTime", Long.class);
+
+    public final StringPath diaryDinner = createString("diaryDinner");
+
+    public final StringPath diaryLunch = createString("diaryLunch");
+
+    public final StringPath diaryMorning = createString("diaryMorning");
+
+    public final StringPath diaryRequest = createString("diaryRequest");
+
+    public final StringPath diaryRoutine = createString("diaryRoutine");
+
+    public final NumberPath<Long> id = createNumber("id", Long.class);
+
+    public final BooleanPath isEdit = createBoolean("isEdit");
+
+    public final StringPath memberName = createString("memberName");
+
+    public final StringPath trainerFeedback = createString("trainerFeedback");
+
+    public final StringPath trainerName = createString("trainerName");
+
+    public QDiary(String variable) {
+        super(Diary.class, forVariable(variable));
+    }
+
+    public QDiary(Path<? extends Diary> path) {
+        super(path.getType(), path.getMetadata());
+    }
+
+    public QDiary(PathMetadata metadata) {
+        super(Diary.class, metadata);
+    }
+
+}
+

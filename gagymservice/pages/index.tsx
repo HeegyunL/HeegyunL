@@ -6,13 +6,14 @@ import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import ColumnBar from "../components/chart/columnBar";
+import ColumnBar from "../components/chart/AmountsByCategories";
 import Layout from "../components/layout";
 
 import partnerSaga from "../middleware/modules/partner";
 import { RootState } from "../provider";
 import { DiaryItemResponse } from "../api/diary";
 import partnerApi, { PartnerItemResponse } from "../api/partner";
+import AmountsByCategories from "../components/chart/AmountsByCategories";
 
 const Index = () => {
   const partners = useSelector((state: RootState) => state.partner);
@@ -21,38 +22,21 @@ const Index = () => {
 
   const router = useRouter();
   const [data, setData] = useState<{
-    ColumnBar: {
-      category: string;
+    AmountsByCategories: {
+      trainerName: string;
       amount: number;
     }[];
   }>();
   const getData = async () => {
-    // const result = await axios.get<typeof data>();
-    // "http://localhost:5050/sales-orders/stats?sd=1997-01-01&ed=1997-01-31"
-    const sample: typeof data = {
-      ColumnBar: [
-        {
-          category: "PT",
-          amount: 21,
-        },
-        {
-          category: "YOGA",
-          amount: 15,
-        },
-        {
-          category: "PILATES",
-          amount: 15,
-        },
-        {
-          category: "GYM",
-          amount: 27,
-        },
-      ],
-    };
-    setData(sample);
-    // setData(result.data);
-  };
+    const result = await axios.get<typeof data>(
+      "http://localhost:8080/reservaion/amounts-by-categories?trainerName=이희균"
+    );
 
+    // setData(sample);
+    setData(result.data);
+    // console.log("---------" + result.data);
+  };
+  // console.log("%%%%%%%" + getData());
   useEffect(() => {
     getData();
   }, []);
@@ -90,7 +74,13 @@ const Index = () => {
                   ))}
                 </table>
                 {/* <h2 style={{ textAlign: "center" }}>제품별 매출액</h2> */}
-                {data && <ColumnBar data={data.ColumnBar} />}
+                {/* {data && <ColumnBar data={data.ColumnBar} />} */}
+                <div style={{ width: "50%" }}>
+                  <h2 style={{ textAlign: "center" }}>제품별 매출액</h2>
+                  {data && (
+                    <AmountsByCategories data={data.AmountsByCategories} />
+                  )}
+                </div>
               </div>
             </div>
             <div className="mt-5">

@@ -1,0 +1,12 @@
+package com.git.gagymservice.reservation;
+import static com.git.gagymservice.reservation.QReservation.reservation;
+
+import org.springframework.stereotype.Repository;
+
+import com.querydsl.jpa.impl.JPAQueryFactory;
+
+@Repository
+public interface ReservationRepositorySupport {
+	private JPAQueryFactory query;
+
+}

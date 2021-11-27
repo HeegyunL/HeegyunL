@@ -1,0 +1,58 @@
+package com.git.gagymservice.reservation;
+
+import static com.querydsl.core.types.PathMetadataFactory.*;
+
+import com.querydsl.core.types.dsl.*;
+
+import com.querydsl.core.types.PathMetadata;
+import javax.annotation.processing.Generated;
+import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
+
+
+/**
+ * QReservation is a Querydsl query type for Reservation
+ */
+@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+public class QReservation extends EntityPathBase<Reservation> {
+
+    private static final long serialVersionUID = -1502924807L;
+
+    public static final QReservation reservation = new QReservation("reservation");
+
+    public final StringPath boughtService = createString("boughtService");
+
+    public final StringPath category = createString("category");
+
+    public final NumberPath<Long> createdTime = createNumber("createdTime", Long.class);
+
+    public final ListPath<ReservationDetail, QReservationDetail> details = this.<ReservationDetail, QReservationDetail>createList("details", ReservationDetail.class, QReservationDetail.class, PathInits.DIRECT2);
+
+    public final StringPath gymName = createString("gymName");
+
+    public final NumberPath<Long> id = createNumber("id", Long.class);
+
+    public final StringPath memberName = createString("memberName");
+
+    public final StringPath memberPhone = createString("memberPhone");
+
+    public final StringPath memberRequest = createString("memberRequest");
+
+    public final StringPath status = createString("status");
+
+    public final StringPath trainerName = createString("trainerName");
+
+    public QReservation(String variable) {
+        super(Reservation.class, forVariable(variable));
+    }
+
+    public QReservation(Path<? extends Reservation> path) {
+        super(path.getType(), path.getMetadata());
+    }
+
+    public QReservation(PathMetadata metadata) {
+        super(Reservation.class, metadata);
+    }
+
+}
+

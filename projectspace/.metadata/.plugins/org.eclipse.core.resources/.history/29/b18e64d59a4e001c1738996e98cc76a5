@@ -1,0 +1,67 @@
+package com.git.gagymservice.trainer;
+
+import static com.querydsl.core.types.PathMetadataFactory.*;
+
+import com.querydsl.core.types.dsl.*;
+
+import com.querydsl.core.types.PathMetadata;
+import javax.annotation.processing.Generated;
+import com.querydsl.core.types.Path;
+
+
+/**
+ * QTrainer is a Querydsl query type for Trainer
+ */
+@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+public class QTrainer extends EntityPathBase<Trainer> {
+
+    private static final long serialVersionUID = -256321845L;
+
+    public static final QTrainer trainer = new QTrainer("trainer");
+
+    public final StringPath fileName = createString("fileName");
+
+    public final StringPath fileType = createString("fileType");
+
+    public final StringPath gymCode = createString("gymCode");
+
+    public final NumberPath<Long> id = createNumber("id", Long.class);
+
+    public final StringPath pilates10TimePrice = createString("pilates10TimePrice");
+
+    public final StringPath pilates1TimePrice = createString("pilates1TimePrice");
+
+    public final StringPath pilates30TimePrice = createString("pilates30TimePrice");
+
+    public final StringPath pt10TimePrice = createString("pt10TimePrice");
+
+    public final StringPath pt1TimePrice = createString("pt1TimePrice");
+
+    public final StringPath pt30TimePrice = createString("pt30TimePrice");
+
+    public final StringPath trainerIntro = createString("trainerIntro");
+
+    public final StringPath trainerName = createString("trainerName");
+
+    public final StringPath trainerPhotoUrl = createString("trainerPhotoUrl");
+
+    public final StringPath yoga10TimePrice = createString("yoga10TimePrice");
+
+    public final StringPath yoga1TimePrice = createString("yoga1TimePrice");
+
+    public final StringPath yoga30TimePrice = createString("yoga30TimePrice");
+
+    public QTrainer(String variable) {
+        super(Trainer.class, forVariable(variable));
+    }
+
+    public QTrainer(Path<? extends Trainer> path) {
+        super(path.getType(), path.getMetadata());
+    }
+
+    public QTrainer(PathMetadata metadata) {
+        super(Trainer.class, metadata);
+    }
+
+}
+

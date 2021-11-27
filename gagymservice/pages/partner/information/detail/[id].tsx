@@ -105,7 +105,7 @@ const PartnerDetail = () => {
                   borderBlockEndWidth: "4px",
                 }}
               >
-                {partners.gymCoNum}원
+                {partners.gymCoNum}
               </p>
             </div>
             {/* 지역 */}

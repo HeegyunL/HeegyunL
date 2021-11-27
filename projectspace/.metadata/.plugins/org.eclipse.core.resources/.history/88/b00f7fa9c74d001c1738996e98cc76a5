@@ -1,0 +1,28 @@
+package com.git.gagymservice.chart;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+//엔터티 모델
+@Entity
+@IdClass(SalesOrderDetailId.class)
+public class SalesOrderDetail {
+	@Id
+	private long salesOrderId;
+	@Id
+	private int seq;
+	
+	@ManyToOne
+	private Reservation reservation;
+
+}

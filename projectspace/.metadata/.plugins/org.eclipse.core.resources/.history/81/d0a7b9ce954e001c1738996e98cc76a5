@@ -1,0 +1,19 @@
+package com.git.gagymservice.chart;
+
+import javax.persistence.EntityManager;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.querydsl.jpa.impl.JPAQueryFactory;
+
+@Repository
+public interface SalesOrderRepositorySupport {
+	private JPAQueryFactory query;
+	
+	@Autowired
+	public SalesOrderRepositorySupport(EntityManager em) {
+		this.query = new JPAQueryFactory(em);
+	}
+	
+}

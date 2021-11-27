@@ -1,0 +1,31 @@
+package com.git.gagymservice.chart;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.ManyToOne;
+
+import com.git.gagymservice.reservation.Reservation;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+//엔터티 모델
+@Entity
+public class SalesOrderDetail {
+	
+	@ManyToOne
+	private Reservation reservation;
+	
+	private String trainerName;
+	
+	
+}

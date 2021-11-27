@@ -3,6 +3,7 @@ package com.git.gagymservice.reservation;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
+
 
 
 
@@ -25,11 +28,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReservationController {
 	private ReservationService service;
 	private ReservationRepository repo;
-	
+	private JPAQueryFactory query;
+	ReservationRepositorySupport support;
 	@Autowired
-	public ReservationController(ReservationRepository repo, ReservationService service) {
+	public ReservationController(ReservationRepository repo, ReservationService service,EntityManager em,ReservationRepositorySupport support) {
 		this.service = service;
 		this.repo = repo;
+		this.query = new JPAQueryFactory(em);
+		this.support = support;
 	}
 	
 	
@@ -85,5 +91,10 @@ public class ReservationController {
 		return reservationSave;
 	}
 	
-	
+//	--------chart gazua!
+	// GET /sales-orders/amounts-by-categories?sd=1997-02-01&ed=1997-02-29
+		@GetMapping("/reservaion/amounts-by-categories")
+		public List<AmountByCategory> statsReservation(@RequestParam String trainerName){
+			return support.statsReservation(trainerName);
+		}
 }

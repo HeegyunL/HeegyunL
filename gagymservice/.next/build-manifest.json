@@ -25,11 +25,6 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/partner/information/Tcreate": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/partner/information/Tcreate.js"
-    ],
     "/partner/information/detail/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -39,11 +34,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/partner/information/edit/[id].js"
-    ],
-    "/partner/information/list": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/partner/information/list.js"
     ]
   },
   "ampFirstPages": []

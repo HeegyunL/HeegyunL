@@ -1,0 +1,20 @@
+package com.git.gagymservice.reservation;
+import static com.git.gagymservice.reservation.QReservation.reservation;
+
+import javax.persistence.EntityManager;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.querydsl.jpa.impl.JPAQueryFactory;
+
+@Repository
+public interface ReservationRepositorySupport {
+	private JPAQueryFactory query;
+	
+	@Autowired
+	public ReservationRepositorySupport(EntityManager em) {
+		this.query = new JPAQueryFactory(em);
+	}
+
+}

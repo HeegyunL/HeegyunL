@@ -1,0 +1,42 @@
+package com.git.gagymservice.chart;
+
+import static com.querydsl.core.types.PathMetadataFactory.*;
+
+import com.querydsl.core.types.dsl.*;
+
+import com.querydsl.core.types.PathMetadata;
+import javax.annotation.processing.Generated;
+import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
+
+
+/**
+ * QSalesOrderDetail is a Querydsl query type for SalesOrderDetail
+ */
+@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+public class QSalesOrderDetail extends EntityPathBase<SalesOrderDetail> {
+
+    private static final long serialVersionUID = 279108468L;
+
+    public static final QSalesOrderDetail salesOrderDetail = new QSalesOrderDetail("salesOrderDetail");
+
+    public final ListPath<com.git.gagymservice.reservation.Reservation, com.git.gagymservice.reservation.QReservation> reservation = this.<com.git.gagymservice.reservation.Reservation, com.git.gagymservice.reservation.QReservation>createList("reservation", com.git.gagymservice.reservation.Reservation.class, com.git.gagymservice.reservation.QReservation.class, PathInits.DIRECT2);
+
+    public final NumberPath<Long> salesOrderId = createNumber("salesOrderId", Long.class);
+
+    public final NumberPath<Integer> seq = createNumber("seq", Integer.class);
+
+    public QSalesOrderDetail(String variable) {
+        super(SalesOrderDetail.class, forVariable(variable));
+    }
+
+    public QSalesOrderDetail(Path<? extends SalesOrderDetail> path) {
+        super(path.getType(), path.getMetadata());
+    }
+
+    public QSalesOrderDetail(PathMetadata metadata) {
+        super(SalesOrderDetail.class, metadata);
+    }
+
+}
+
