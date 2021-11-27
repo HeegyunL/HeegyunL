@@ -29,7 +29,7 @@ const Index = () => {
   }>();
   const getData = async () => {
     const result = await axios.get<typeof data>(
-      "http://localhost:8080/reservaion/amounts-by-categories?trainerName=이희균"
+      "http://52.79.120.222:8080/reservation/amounts-by-categories?trainerName=이희균"
     );
 
     // setData(sample);

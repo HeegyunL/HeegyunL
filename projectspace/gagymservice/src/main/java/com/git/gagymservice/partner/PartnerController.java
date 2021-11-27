@@ -19,7 +19,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.git.gagymservice.lib.TextProcesser;
 
-
 @RestController
 public class PartnerController {
 	private PartnerService service;

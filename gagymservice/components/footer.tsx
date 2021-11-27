@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { Navbar, Container, Nav } from "react-bootstrap";
 
 const Footer = () => {
+  
   const router = useRouter();
   return (
     <footer className="">
