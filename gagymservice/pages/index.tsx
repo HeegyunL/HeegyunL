@@ -10,6 +10,10 @@ import { AppDispatch, RootState } from "../provider";
 import AmountsByCategories from "../components/chart/AmountsByCategories";
 import { requestFetchPagingDiary } from "../middleware/modules/diary";
 import { requestFetchPagingReservation } from "../middleware/modules/reservation";
+import { ApexOptions } from "apexcharts";
+import dynamic from "next/dynamic";
+// import Chart from "react-apexcharts";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const Index = () => {
   const partners = useSelector((state: RootState) => state.partner);
@@ -18,17 +22,36 @@ const Index = () => {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
   const [data, setData] = useState<{
-    amountsByCategories: {
-      trainerName: string;
-      amount: number;
+    options: ApexOptions;
+    series: {
+      name: string;
+      data: number[];
     }[];
   }>();
+
   const getData = async () => {
-    const result = await axios.get<typeof data>(
-      "http://52.79.120.222:8080/reservaion/amounts-by-categories?trainerName"
-    );
-    console.log(result.data);
-    setData(result.data);
+    const result = await axios.get<
+      {
+        trainerName: string;
+        amount: number;
+      }[]
+    >("http://52.79.120.222:8080/reservaion/amounts-by-categories?trainerName");
+
+    const data = result.data;
+
+    const options: ApexOptions = {
+      title: {
+        text: `강사별 예약 현황`,
+      },
+      xaxis: {
+        // 배열 -> 배열, 요소의 개수가 동일함, 요소의 형식은 다름
+        // map함수를 사용함
+        // ["강남구", ... , "중랑구"]
+        categories: data.map((item) => item.trainerName),
+      },
+    };
+    const series = [{ name: "제품군", data: data.map((item) => item.amount) }];
+    setData({ options, series });
   };
 
   useEffect(() => {
@@ -78,7 +101,11 @@ const Index = () => {
               <div className="d-flex">
                 <table
                   className="table"
-                  style={{ width: "40%", height: "300px" }}
+                  style={{
+                    width: "40%",
+                    height: "300px",
+                    marginRight: "100px",
+                  }}
                 >
                   <thead className="text-center my-2">
                     <tr>
@@ -95,20 +122,16 @@ const Index = () => {
                     </tbody>
                   ))}
                 </table>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    flexWrap: "wrap",
-                    width: "1000px",
-                  }}
-                >
-                  <div style={{ width: "50%" }}>
-                    <h2 style={{ textAlign: "center" }}>제품별 매출액</h2>
-                    {data && (
-                      <AmountsByCategories data={data.amountsByCategories} />
-                    )}
-                  </div>
+                <div>
+                  {data && (
+                    <Chart
+                      options={data?.options}
+                      series={data?.series}
+                      type="bar"
+                      width="400px"
+                      height="350px"
+                    />
+                  )}
                 </div>
               </div>
             </div>

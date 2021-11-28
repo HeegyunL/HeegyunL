@@ -230,8 +230,8 @@ const partners = result.data.map(
       );
       const urlArr = partnerItmeFile.gymPhoto.split("/");
       const objectKey = urlArr[urlArr.length - 1];
-
       yield call(fileApi.remove, objectKey);
+      
       const file: File = yield call(
         dataUrlToFile,
         partnerItemPayload.gymPhoto,
@@ -268,7 +268,6 @@ const partners = result.data.map(
       gym3MonthPrice : partnerItemPayload.gym3MonthPrice,
       gym6MonthPrice : partnerItemPayload.gym6MonthPrice,
       gymYearPrice : partnerItemPayload.gymYearPrice,
-      // gymTrainer : partnerItemPayload.gymTrainer
   
     };
   

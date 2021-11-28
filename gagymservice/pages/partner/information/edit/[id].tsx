@@ -54,6 +54,9 @@ const PartnerEdit = () => {
           item.gymAddress = gymAddressRef.current?.value;
           item.gymPhoneNum = gymPhoneNumRef.current?.value;
           item.gymService = gymServiceRef.current?.value;
+          item.gymPhoto = reader.result ? reader.result?.toString() : "";
+          item.fileName = imageFile.name;
+          item.fileType = imageFile.type;
           item.gymTime = gymTimeRef.current?.value;
           item.gym1DayPrice = gym1DayPriceRef.current?.value;
           item.gym3DayPrice = gym1DayPriceRef.current?.value;

@@ -87,7 +87,7 @@ const Tcreate = () => {
             (item.pilates10TimePrice = pilates10TimePriceRef.current?.value),
             (item.pilates30TimePrice = pilates30TimePriceRef.current?.value);
           dispatch(requestModifyTrainer(item));
-          router.push("/partner/information/tList");
+          router.push("/partner/information/list");
         }
       };
       reader.readAsDataURL(imageFile);
