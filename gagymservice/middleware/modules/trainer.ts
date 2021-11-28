@@ -188,15 +188,37 @@ const trainers = result.data.map(
 
   function* modifyData(action: PayloadAction<TrainerItem>) {
     yield console.log("--modifyData--");
-  
+    
     const trainerItemPayload = action.payload;
+
+    let fileUrl = action.payload.trainerPhotoUrl;
+    if(action.payload.trainerPhotoUrl.startsWith("data")){
+      const photoItemFile : TrainerItem = yield select((state:RootState)=>
+      state.trainer.data.find((item)=> item.id === trainerItemPayload.id)
+      );
+      const urlArr = photoItemFile.trainerPhotoUrl.split("/");
+      const objectKey = urlArr[urlArr.length - 1];
+      yield call(fileApi.remove, objectKey)
+
+      const file : File = yield call(
+        dataUrlToFile,
+        trainerItemPayload.trainerPhotoUrl,
+        trainerItemPayload.fileName,
+        trainerItemPayload.fileType,
+      );
+      const formFile = new FormData();
+      formFile.set("file", file);
+
+      const fileRes : AxiosResponse<string> = yield call(fileApi.upload, formFile);
+      fileUrl = fileRes.data;
+    }
   
     const trainerItemRequest: TrainerItemRequest = {
         id:trainerItemPayload.id,
         gymCode:trainerItemPayload.gymCode,
         trainerName:trainerItemPayload.trainerName,
         trainerIntro:trainerItemPayload.trainerIntro,
-        trainerPhotoUrl:trainerItemPayload.trainerPhotoUrl,
+        trainerPhotoUrl:fileUrl,
         fileName:trainerItemPayload.fileName,
         fileType:trainerItemPayload.fileType,
         pt1TimePrice:trainerItemPayload.pt1TimePrice,

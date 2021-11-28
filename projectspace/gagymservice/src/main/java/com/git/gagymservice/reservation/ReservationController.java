@@ -92,9 +92,16 @@ public class ReservationController {
 	}
 	
 //	--------chart gazua!
-	// GET /sales-orders/amounts-by-categories?sd=1997-02-01&ed=1997-02-29
+	
+	@GetMapping("/reservaion/stats")
+	public AmountStat getStats(@RequestParam String trainerName){
+		return AmountStat
+				.builder()
+				.amountsByCategories(support.statsAmountByCategory(trainerName))
+				.build();
+	}
 		@GetMapping("/reservaion/amounts-by-categories")
-		public List<AmountByCategory> statsReservation(@RequestParam String trainerName){
-			return support.statsReservation(trainerName);
+		public List<AmountByCategory> getAmountByCategory(@RequestParam String trainerName){
+			return support.statsAmountByCategory(trainerName);
 		}
 }

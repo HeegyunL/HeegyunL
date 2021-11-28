@@ -17,7 +17,7 @@ const TList = () => {
   return (
     <Layout>
       <div>
-        <body>
+        <form>
           <div className="mx-auto mt-5" style={{ width: "850px" }}>
             <h4 className=" float-start">강사 정보</h4>
             <button className="btn btn-primary float-end btn-sm">
@@ -36,7 +36,9 @@ const TList = () => {
                   <tr
                     key={index}
                     onClick={() => {
-                      router.push(`/partner/information/detail/${item.id}`);
+                      router.push(
+                        `/partner/information/trainerEdit/${item.id}`
+                      );
                     }}
                   >
                     <td>{item.gymCode}</td>
@@ -47,7 +49,7 @@ const TList = () => {
               </tbody>
             </table>
           </div>
-        </body>
+        </form>
       </div>
     </Layout>
   );

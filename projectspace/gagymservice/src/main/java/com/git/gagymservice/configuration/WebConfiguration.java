@@ -18,7 +18,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 						"http://ec2-15-164-54-15.ap-northeast-2.compute.amazonaws.com:8080",
 						"http://ec2-52-79-120-222.ap-northeast-2.compute.amazonaws.com:8080",
 						"http://52.79.120.222","http://52.79.120.222:8080",
-						"http://15.164.54.15","http://15.164.54.15:8080")
+						"http://15.164.54.15","http://15.164.54.15:8080","http://15.164.54.15:8081")
 				.allowedMethods("*"); // 전체메서드를 허용(GET, POST, PUT....)
 	}
 }

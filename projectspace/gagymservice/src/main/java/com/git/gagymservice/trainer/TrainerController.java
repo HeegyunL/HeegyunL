@@ -77,9 +77,9 @@ public class TrainerController {
 		trainerToSave.setTrainerName(trainer.getTrainerName());
 		trainerToSave.setTrainerIntro(trainer.getTrainerIntro());
 		trainerToSave.setTrainerPhotoUrl(trainer.getTrainerPhotoUrl());
-		trainerToSave.setPt1TimePrice(trainer.getPilates1TimePrice());
-		trainerToSave.setPt10TimePrice(trainer.getPilates10TimePrice());
-		trainerToSave.setPt30TimePrice(trainer.getPilates30TimePrice());
+		trainerToSave.setPt1TimePrice(trainer.getPt1TimePrice());
+		trainerToSave.setPt10TimePrice(trainer.getPt10TimePrice());
+		trainerToSave.setPt30TimePrice(trainer.getPt30TimePrice());
 		trainerToSave.setYoga1TimePrice(trainer.getYoga1TimePrice());
 		trainerToSave.setYoga10TimePrice(trainer.getYoga10TimePrice());
 		trainerToSave.setYoga30TimePrice(trainer.getYoga30TimePrice());

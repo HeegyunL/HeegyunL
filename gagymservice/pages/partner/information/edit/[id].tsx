@@ -5,9 +5,6 @@ import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 import Layout from "../../../../components/layout";
 import { AppDispatch, RootState } from "../../../../provider";
 import { requestModifyPartner } from "../../../../middleware/modules/partner";
-import { requestModifyTrainer } from "../../../../middleware/modules/trainer";
-import { requestFetchTrainer } from "../../../../middleware/modules/trainer";
-import NavItem from "@restart/ui/esm/NavItem";
 
 const PartnerEdit = () => {
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -32,6 +29,7 @@ const PartnerEdit = () => {
   const gymLocateGunGuRef = useRef() as MutableRefObject<HTMLInputElement>;
   const gymAddressRef = useRef() as MutableRefObject<HTMLInputElement>;
   const gymPhoneNumRef = useRef() as MutableRefObject<HTMLInputElement>;
+  const gymPhotoRef = useRef() as MutableRefObject<HTMLInputElement>;
   const gymTimeRef = useRef() as MutableRefObject<HTMLInputElement>;
   const gymServiceRef = useRef() as MutableRefObject<HTMLInputElement>;
   const gym1DayPriceRef = useRef() as MutableRefObject<HTMLInputElement>;
@@ -43,65 +41,36 @@ const PartnerEdit = () => {
   const gymYearPriceRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   const handleSaveClick = () => {
-    if (PartnerItem) {
-      const item = { ...PartnerItem };
-      item.gymName = gymNameRef.current?.value;
-      item.gymCoNum = gymCoNumRef.current?.value;
-      item.gymLocateSi = gymLocateSiRef.current?.value;
-      item.gymLocateGunGu = gymLocateGunGuRef.current?.value;
-      item.gymAddress = gymAddressRef.current?.value;
-      item.gymPhoneNum = gymPhoneNumRef.current?.value;
-      item.gymService = gymServiceRef.current?.value;
-      item.gymTime = gymTimeRef.current?.value;
-      item.gym1DayPrice = gym1DayPriceRef.current?.value;
-      item.gym3DayPrice = gym1DayPriceRef.current?.value;
-      item.gym7DayPrice = gym1DayPriceRef.current?.value;
-      item.gymMonthPrice = gymMonthPriceRef.current?.value;
-      item.gym3MonthPrice = gym3MonthPriceRef.current?.value;
-      item.gym6MonthPrice = gym6MonthPriceRef.current?.value;
-      item.gymYearPrice = gymYearPriceRef.current?.value;
+    if (gymPhotoRef.current.files?.length) {
+      const imageFile = gymPhotoRef.current.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (PartnerItem) {
+          const item = { ...PartnerItem };
+          item.gymName = gymNameRef.current?.value;
+          item.gymCoNum = gymCoNumRef.current?.value;
+          item.gymLocateSi = gymLocateSiRef.current?.value;
+          item.gymLocateGunGu = gymLocateGunGuRef.current?.value;
+          item.gymAddress = gymAddressRef.current?.value;
+          item.gymPhoneNum = gymPhoneNumRef.current?.value;
+          item.gymService = gymServiceRef.current?.value;
+          item.gymTime = gymTimeRef.current?.value;
+          item.gym1DayPrice = gym1DayPriceRef.current?.value;
+          item.gym3DayPrice = gym1DayPriceRef.current?.value;
+          item.gym7DayPrice = gym1DayPriceRef.current?.value;
+          item.gymMonthPrice = gymMonthPriceRef.current?.value;
+          item.gym3MonthPrice = gym3MonthPriceRef.current?.value;
+          item.gym6MonthPrice = gym6MonthPriceRef.current?.value;
+          item.gymYearPrice = gymYearPriceRef.current?.value;
 
-      dispatch(requestModifyPartner(item));
-      router.push("/partner/information/list");
+          dispatch(requestModifyPartner(item));
+          router.push("/partner/information/list");
+        }
+      };
+      reader.readAsDataURL(imageFile);
     }
   };
 
-  // 강사
-  const trainerNameRef = useRef() as MutableRefObject<HTMLInputElement>;
-  const trainerIntroRef = useRef() as MutableRefObject<HTMLInputElement>;
-  const trainerPhotoUrlRef = useRef<HTMLInputElement>(null);
-
-  const pt1TimePriceRef = useRef() as MutableRefObject<HTMLInputElement>;
-  const pt10TimePriceRef = useRef() as MutableRefObject<HTMLInputElement>;
-  const pt30TimePriceRef = useRef() as MutableRefObject<HTMLInputElement>;
-
-  const yoga1TimePriceRef = useRef() as MutableRefObject<HTMLInputElement>;
-  const yoga10TimePriceRef = useRef() as MutableRefObject<HTMLInputElement>;
-  const yoga30TimePriceRef = useRef() as MutableRefObject<HTMLInputElement>;
-
-  const pilates1TimePriceRef = useRef() as MutableRefObject<HTMLInputElement>;
-  const pilates10TimePriceRef = useRef() as MutableRefObject<HTMLInputElement>;
-  const pilates30TimePriceRef = useRef() as MutableRefObject<HTMLInputElement>;
-
-  const trainerSaveClick = () => {
-    if (Trainermodi) {
-      const item = { ...Trainermodi };
-      item.trainerName = trainerNameRef.current?.value;
-      item.trainerIntro = trainerIntroRef.current?.value;
-      item.pt1TimePrice = pt1TimePriceRef.current?.value;
-      item.pt10TimePrice = pt10TimePriceRef.current?.value;
-      item.pt30TimePrice = pt30TimePriceRef.current?.value;
-      item.yoga1TimePrice = yoga1TimePriceRef.current?.value;
-      item.yoga10TimePrice = yoga10TimePriceRef.current?.value;
-      item.yoga30TimePrice = yoga30TimePriceRef.current?.value;
-      item.pilates1TimePrice = pilates1TimePriceRef.current?.value;
-      item.pilates10TimePrice = pilates10TimePriceRef.current?.value;
-      item.pilates30TimePrice = pilates30TimePriceRef.current?.value;
-
-      dispatch(requestModifyTrainer(item));
-      router.push(`/partner/information/edit/${id}`);
-    }
-  };
   const trainer = useSelector((state: RootState) => state.trainer);
 
   const trainers = trainer.data.filter(
@@ -237,6 +206,23 @@ const PartnerEdit = () => {
                 defaultValue={PartnerItem?.gymTime}
               ></input>
             </div>
+            {/* 사진 */}
+            <div className="mt-3 d-flex">
+              <h4 className=" text-nowrap" style={{ marginLeft: "190px" }}>
+                사진
+              </h4>
+              <div>
+                <input
+                  style={{ width: "100%", marginLeft: "217px" }}
+                  className="form-control "
+                  type="file"
+                  accept="image/*"
+                  name="omg"
+                  id="omg"
+                  ref={gymPhotoRef}
+                />
+              </div>
+            </div>
             {/* 강사 소개 */}
             <div className="mt-3 d-flex">
               <h4
@@ -253,7 +239,7 @@ const PartnerEdit = () => {
                 }}
                 className="d-flex"
               >
-                <div className="d-flex ms-2">
+                <div className="d-flex">
                   <Button
                     color="primary"
                     type="button"
@@ -272,176 +258,125 @@ const PartnerEdit = () => {
                     </div>
                     {trainers.map((item, index) => (
                       <ModalBody key={item.id}>
-                        <div className="d-flex">
-                          <p>이름 :</p>
-                          <input
-                            ref={trainerNameRef}
-                            style={{
-                              width: "80%",
-                              height: "30px",
-                              borderBlockEndWidth: "4px",
-                              marginLeft: "2.3rem",
-                            }}
-                            defaultValue={item.trainerName}
-                          ></input>
-                        </div>
-                        <div className="d-flex">
-                          <p>한줄 소개 :</p>
-                          <input
-                            ref={trainerIntroRef}
-                            className="ms-1"
-                            style={{
-                              width: "80%",
-                              height: "30px",
-                              borderBlockEndWidth: "4px",
-                            }}
-                            defaultValue={item.trainerIntro}
-                          ></input>
-                        </div>
-                        <div className="d-flex">
-                          <table className="table">
-                            <thead>
-                              <tr>
-                                <th className="text-center me-3" scope="col">
-                                  <h3></h3>
-                                </th>
-                                <th className="text-center" scope="col">
-                                  1Time
-                                </th>
-                                <th className="text-center" scope="col">
-                                  10Time
-                                </th>
-                                <th className="text-center" scope="col">
-                                  30Time
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr className="mt-5">
-                                <td className="text-center">
-                                  <h5>PT</h5>
-                                </td>
-                                <td>
-                                  <input
-                                    ref={pt1TimePriceRef}
-                                    style={{
-                                      width: "80%",
-                                      height: "30px",
-                                      borderBlockEndWidth: "4px",
-                                    }}
-                                    className="text-center"
-                                    defaultValue={item.pt1TimePrice}
-                                  ></input>
-                                </td>
-                                <td>
-                                  <input
-                                    ref={pt10TimePriceRef}
-                                    style={{
-                                      width: "80%",
-                                      height: "30px",
-                                      borderBlockEndWidth: "4px",
-                                    }}
-                                    className="text-center"
-                                    defaultValue={item.pt10TimePrice}
-                                  ></input>
-                                </td>
-                                <td>
-                                  <input
-                                    ref={pt30TimePriceRef}
-                                    style={{
-                                      width: "80%",
-                                      height: "30px",
-                                      borderBlockEndWidth: "4px",
-                                    }}
-                                    className="text-center"
-                                    defaultValue={item.pt30TimePrice}
-                                  ></input>
-                                </td>
-                              </tr>
-                              <tr className="mt-5">
-                                <td className="text-center">
-                                  <h5>요가</h5>
-                                </td>
-                                <td>
-                                  <input
-                                    ref={yoga1TimePriceRef}
-                                    style={{
-                                      width: "80%",
-                                      height: "30px",
-                                      borderBlockEndWidth: "4px",
-                                    }}
-                                    className="text-center"
-                                    defaultValue={item.pt1TimePrice}
-                                  ></input>
-                                </td>
-                                <td>
-                                  <input
-                                    ref={yoga10TimePriceRef}
-                                    style={{
-                                      width: "80%",
-                                      height: "30px",
-                                      borderBlockEndWidth: "4px",
-                                    }}
-                                    className="text-center"
-                                    defaultValue={item.pt10TimePrice}
-                                  ></input>
-                                </td>
-                                <td>
-                                  <input
-                                    ref={yoga30TimePriceRef}
-                                    style={{
-                                      width: "80%",
-                                      height: "30px",
-                                      borderBlockEndWidth: "4px",
-                                    }}
-                                    className="text-center"
-                                    defaultValue={item.pt30TimePrice}
-                                  ></input>
-                                </td>
-                              </tr>
-                              <tr className="mt-5">
-                                <td className="text-center">
-                                  <h5>필라테스</h5>
-                                </td>
-                                <td>
-                                  <input
-                                    ref={pilates1TimePriceRef}
-                                    style={{
-                                      width: "80%",
-                                      height: "30px",
-                                      borderBlockEndWidth: "4px",
-                                    }}
-                                    className="text-center"
-                                    defaultValue={item.pt1TimePrice}
-                                  ></input>
-                                </td>
-                                <td>
-                                  <input
-                                    ref={pilates10TimePriceRef}
-                                    style={{
-                                      width: "80%",
-                                      height: "30px",
-                                      borderBlockEndWidth: "4px",
-                                    }}
-                                    className="text-center"
-                                    defaultValue={item.pt10TimePrice}
-                                  ></input>
-                                </td>
-                                <td>
-                                  <input
-                                    ref={pilates30TimePriceRef}
-                                    style={{
-                                      width: "80%",
-                                      height: "30px",
-                                      borderBlockEndWidth: "4px",
-                                    }}
-                                    className="text-center"
-                                    defaultValue={item.pt30TimePrice}
-                                  ></input>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        <div
+                          onClick={() => {
+                            router.push(
+                              `/partner/information/trainerEdit/${item.id}`
+                            );
+                          }}
+                          className=""
+                          style={{
+                            borderBottomStyle: "dotted",
+                            borderBottomWidth: "1px",
+                          }}
+                        >
+                          <div className="d-flex">
+                            <p>이름 :</p>
+                            <p>{item.trainerName}</p>
+                          </div>
+                          <div className="d-flex">
+                            <p>한줄 소개 :</p>
+                            <p>{item.trainerIntro}</p>
+                          </div>
+                          <div className="d-flex">
+                            <img
+                              style={{
+                                width: "150px",
+                                height: "150px",
+                                borderStyle: "solid",
+                                borderWidth: "1px",
+                                borderColor: "gray",
+                                boxShadow: "2px 3px 5px 0px",
+                              }}
+                              src={item.trainerPhotoUrl}
+                              alt="TrainerPhoto"
+                            />
+                            <table
+                              className="table ms-2"
+                              style={{
+                                borderStyle: "solid",
+                                borderWidth: "3px",
+                                width: "100%",
+                              }}
+                            >
+                              <thead>
+                                <tr>
+                                  <th className="text-center" scope="col"></th>
+                                  <th className="text-center" scope="col">
+                                    1Time
+                                  </th>
+                                  <th className="text-center" scope="col">
+                                    10Time
+                                  </th>
+                                  <th className="text-center" scope="col">
+                                    30Time
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr className="">
+                                  <td className="text-center">
+                                    <p>PT</p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt1TimePrice}
+                                    </p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt10TimePrice}
+                                    </p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt30TimePrice}
+                                    </p>
+                                  </td>
+                                </tr>
+                                <tr className="">
+                                  <td className="text-center">
+                                    <p>요가</p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt1TimePrice}
+                                    </p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt10TimePrice}
+                                    </p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt30TimePrice}
+                                    </p>
+                                  </td>
+                                </tr>
+                                <tr className="">
+                                  <td className="text-center text-nowrap">
+                                    <p>필라테스</p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt1TimePrice}
+                                    </p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt10TimePrice}
+                                    </p>
+                                  </td>
+                                  <td>
+                                    <p className="text-center">
+                                      {item.pt30TimePrice}
+                                    </p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </ModalBody>
                     ))}
@@ -452,17 +387,6 @@ const PartnerEdit = () => {
                         onClick={() => setModalOpen(!modalOpen)}
                       >
                         Close
-                      </Button>
-                      <Button
-                        color="primary"
-                        type="button"
-                        onClick={() => {
-                          trainerSaveClick();
-                          router.push(`/partner/information/edit/${id}`),
-                            setModalOpen(!modalOpen);
-                        }}
-                      >
-                        Save changes
                       </Button>
                     </ModalFooter>
                   </Modal>

@@ -5,11 +5,9 @@ import { AppDispatch, RootState } from "../../../provider";
 import { TrainerItem } from "../../../provider/modules/trainer";
 import { requestAddTrainer } from "../../../middleware/modules/trainer";
 import { Image } from "react-bootstrap";
-import { requestFetchPartner } from "../../../middleware/modules/partner";
 import React from "react";
 import styles from "../../../styles/TrainerCreate.module.css";
 import Layout from "../../../components/layout";
-import { right } from "@popperjs/core";
 const Tcreate = () => {
   const gymCodeRef = useRef() as MutableRefObject<HTMLDivElement>;
   const trainerNameRef = useRef() as MutableRefObject<HTMLInputElement>;
@@ -31,7 +29,6 @@ const Tcreate = () => {
 
   const partnerData = useSelector((state: RootState) => state.partner);
   const trainerData = useSelector((state: RootState) => state.trainer.data);
-  const TrainerData = useSelector((state: RootState) => state.trainer);
   const isAddCompleted = useSelector(
     (state: RootState) => state.trainer.isAddCompleted
   );

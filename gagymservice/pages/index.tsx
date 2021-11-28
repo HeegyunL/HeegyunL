@@ -1,51 +1,71 @@
-import NavItem from "@restart/ui/esm/NavItem";
 import axios from "axios";
-import { iteratorSymbol } from "immer/dist/internal";
-import type { NextPage } from "next";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import ColumnBar from "../components/chart/AmountsByCategories";
+import { useDispatch, useSelector } from "react-redux";
 import Layout from "../components/layout";
 
-import partnerSaga from "../middleware/modules/partner";
-import { RootState } from "../provider";
-import { DiaryItemResponse } from "../api/diary";
-import partnerApi, { PartnerItemResponse } from "../api/partner";
+import { requestFetchPartner } from "../middleware/modules/partner";
+import { AppDispatch, RootState } from "../provider";
 import AmountsByCategories from "../components/chart/AmountsByCategories";
+import { requestFetchPagingDiary } from "../middleware/modules/diary";
+import { requestFetchPagingReservation } from "../middleware/modules/reservation";
 
 const Index = () => {
   const partners = useSelector((state: RootState) => state.partner);
   const diarys = useSelector((state: RootState) => state.diary);
   const reservations = useSelector((state: RootState) => state.reservation);
-
+  const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
   const [data, setData] = useState<{
-    AmountsByCategories: {
+    amountsByCategories: {
       trainerName: string;
       amount: number;
     }[];
   }>();
   const getData = async () => {
     const result = await axios.get<typeof data>(
-      "http://52.79.120.222:8080/reservation/amounts-by-categories?trainerName=이희균"
+      "http://52.79.120.222:8080/reservaion/amounts-by-categories?trainerName"
     );
-
-    // setData(sample);
+    console.log(result.data);
     setData(result.data);
-    // console.log("---------" + result.data);
   };
-  // console.log("%%%%%%%" + getData());
+
   useEffect(() => {
+    if (!partners.isFetched) {
+      dispatch(requestFetchPartner());
+    }
+    if (!diarys.isFetched) {
+      dispatch(
+        requestFetchPagingDiary({
+          page: 0,
+          size: 5,
+        })
+      );
+    }
+    if (!reservations.isFetched) {
+      dispatch(
+        requestFetchPagingReservation({
+          page: 0,
+          size: 5,
+        })
+      );
+    }
     getData();
-  }, []);
+    console.log("----" + getData());
+  }, [
+    dispatch,
+    partners.isFetched,
+    diarys.isFetched,
+    reservations.isFetched,
+    reservations.pageSize,
+  ]);
 
   return (
     <Layout>
       <div>
         <body>
-          <div className="mx-auto" style={{ width: "850px" }}>
+          <div className="mx-auto" style={{ width: "900px" }}>
             <div className="justify-content-md-end">
               {/* <h4 className="mb-3 float-start">헬스장 정보</h4> */}
               <Link href="/partner/information/detail">
@@ -56,7 +76,10 @@ const Index = () => {
                 </a>
               </Link>
               <div className="d-flex">
-                <table className="table" style={{ width: "40%" }}>
+                <table
+                  className="table"
+                  style={{ width: "40%", height: "300px" }}
+                >
                   <thead className="text-center my-2">
                     <tr>
                       <th scope="col">헬스장 명</th>
@@ -72,19 +95,26 @@ const Index = () => {
                     </tbody>
                   ))}
                 </table>
-                {/* <h2 style={{ textAlign: "center" }}>제품별 매출액</h2> */}
-                {/* {data && <ColumnBar data={data.ColumnBar} />} */}
-                <div style={{ width: "50%" }}>
-                  <h2 style={{ textAlign: "center" }}>제품별 매출액</h2>
-                  {data && (
-                    <AmountsByCategories data={data.AmountsByCategories} />
-                  )}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    flexWrap: "wrap",
+                    width: "1000px",
+                  }}
+                >
+                  <div style={{ width: "50%" }}>
+                    <h2 style={{ textAlign: "center" }}>제품별 매출액</h2>
+                    {data && (
+                      <AmountsByCategories data={data.amountsByCategories} />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
             <div className="mt-5">
               <h4 className=" float-start">예약 목록</h4>
-              <Link href="/partner/reservation/list">
+              <Link href={`/partner/reservation/list`}>
                 <a>
                   <button className="btn btn-primary float-end btn-sm">
                     목록 보기
@@ -104,7 +134,7 @@ const Index = () => {
                 <tbody>
                   {reservations.data.map((item, index) => (
                     <Link
-                      href={`/partner/ptDiary/detail/${item.id}`}
+                      href={`/partner/reservation/detail/${item.id}`}
                       key={`partners-item-${index}`}
                     >
                       <tr key={`partners-item-${index}`}>

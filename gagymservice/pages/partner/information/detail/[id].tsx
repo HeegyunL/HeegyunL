@@ -29,13 +29,12 @@ const PartnerDetail = () => {
       dispatch(requestFetchPartnerItem(+id));
     }
   }
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const trainer = useSelector((state: RootState) => state.trainer);
 
   const isRemoveCompleted = useSelector(
     (state: RootState) => state.partner.isRemoveCompleted
   );
-
-  const [modalOpen, setModalOpen] = React.useState(false);
-  const trainer = useSelector((state: RootState) => state.trainer);
 
   const handleDeleteClick = () => {
     dispatch(requestRemovePartner(+id));
@@ -55,43 +54,100 @@ const PartnerDetail = () => {
     <Layout>
       <body>
         {partners && (
-          <div className="mx-auto mt-5" style={{ width: "900px" }}>
-            <h4 className="mt-5 text-center"> 헬스장 정보</h4>
-            {/* 헬스장 명 */}
-            <div className="d-flex mt-5">
-              <h4
-                className="col me-3 text-nowrap text-center"
-                style={{ width: "200px" }}
-              >
-                헬스장 명
-              </h4>
-              <p
-                style={{
-                  width: "400px",
-                  height: "45px",
-                  borderBlockEndWidth: "4px",
-                }}
-              >
-                {/* {" "} */}
-                {partners.gymName}
-              </p>
-            </div>
+          <div className="mx-auto mt-5 " style={{ width: "900px" }}>
             {/* 헬스장 사진 */}
-            <div className="d-flex mt-3">
-              <h4 className="col ms-5 text-nowrap text-center">헬스장 사진</h4>
-              <div style={{ width: "50%" }}>
-                <img
-                  src={partners.gymPhoto}
-                  alt={partners.fileName}
-                  width={"300px"}
-                  height={"300px"}
-                  // style={{ marginLeft: "100px" }}
-                  className="mx-auto"
-                />
+            <div className="d-flex">
+              <img
+                src={partners.gymPhoto}
+                alt={partners.fileName}
+                width={"300px"}
+                height={"300px"}
+                style={{
+                  marginLeft: "100px",
+                  borderStyle: "solid",
+                  borderWidth: "1px",
+                  borderColor: "gray",
+                  boxShadow: "2px 3px 5px 0px",
+                }}
+                // className="mx-auto"
+              />
+              <div className="">
+                {/* 헬스장 명 */}
+                <div className="d-flex mt-3">
+                  <h4
+                    className="col me-3 text-nowrap "
+                    style={{ width: "", marginLeft: "50px" }}
+                  >
+                    헬스장 명
+                  </h4>
+                  <p
+                    style={{
+                      width: "400px",
+                      height: "45px",
+                      borderBlockEndWidth: "4px",
+                    }}
+                  >
+                    {partners.gymName}
+                  </p>
+                </div>
+                {/* 지역 */}
+                <div className="d-flex mt-3">
+                  <h4
+                    className="col me-3 text-nowrap text-center"
+                    style={{ width: "200px" }}
+                  >
+                    지역
+                  </h4>
+                  <p
+                    style={{
+                      width: "400px",
+                      height: "45px",
+                      borderBlockEndWidth: "4px",
+                    }}
+                  >
+                    {partners.gymLocateSi} {partners.gymLocateGunGu}
+                  </p>
+                </div>
+                {/* 전화번호 */}
+                <div className="d-flex mt-3">
+                  <h4
+                    className="col me-3 text-nowrap text-center"
+                    style={{ width: "200px" }}
+                  >
+                    전화 번호
+                  </h4>
+                  <p
+                    style={{
+                      width: "400px",
+                      height: "45px",
+                      borderBlockEndWidth: "4px",
+                    }}
+                  >
+                    {partners.gymPhoneNum}
+                  </p>
+                </div>
+                {/* 운영시간 */}
+                <div className="d-flex mt-3">
+                  <h4
+                    className="col me-3 text-nowrap text-center"
+                    style={{ width: "200px" }}
+                  >
+                    운영시간
+                  </h4>
+                  <p
+                    style={{
+                      width: "400px",
+                      height: "45px",
+                      borderBlockEndWidth: "4px",
+                    }}
+                  >
+                    {partners.gymTime}
+                  </p>
+                </div>
               </div>
             </div>
             {/* 사업자 번호 */}
-            <div className="d-flex mt-3">
+            <div className="d-flex mt-5">
               <h4
                 className="col me-3 text-nowrap text-center"
                 style={{ width: "200px" }}
@@ -108,24 +164,7 @@ const PartnerDetail = () => {
                 {partners.gymCoNum}
               </p>
             </div>
-            {/* 지역 */}
-            <div className="d-flex mt-3">
-              <h4
-                className="col me-3 text-nowrap text-center"
-                style={{ width: "200px" }}
-              >
-                지역
-              </h4>
-              <p
-                style={{
-                  width: "400px",
-                  height: "45px",
-                  borderBlockEndWidth: "4px",
-                }}
-              >
-                {partners.gymLocateSi} {partners.gymLocateGunGu}
-              </p>
-            </div>
+
             {/* 주소 */}
             <div className="d-flex mt-3">
               <h4
@@ -142,42 +181,6 @@ const PartnerDetail = () => {
                 }}
               >
                 {partners.gymAddress}
-              </p>
-            </div>
-            {/* 전화번호 */}
-            <div className="d-flex mt-3">
-              <h4
-                className="col me-3 text-nowrap text-center"
-                style={{ width: "200px" }}
-              >
-                전화 번호
-              </h4>
-              <p
-                style={{
-                  width: "400px",
-                  height: "45px",
-                  borderBlockEndWidth: "4px",
-                }}
-              >
-                {partners.gymPhoneNum}
-              </p>
-            </div>
-            {/* 운영시간 */}
-            <div className="d-flex mt-3">
-              <h4
-                className="col me-3 text-nowrap text-center"
-                style={{ width: "200px" }}
-              >
-                운영시간
-              </h4>
-              <p
-                style={{
-                  width: "400px",
-                  height: "45px",
-                  borderBlockEndWidth: "4px",
-                }}
-              >
-                {partners.gymTime}
               </p>
             </div>
             {/* 강사 소개 */}
@@ -349,9 +352,6 @@ const PartnerDetail = () => {
                         onClick={() => setModalOpen(!modalOpen)}
                       >
                         Close
-                      </Button>
-                      <Button color="primary" type="button">
-                        Save changes
                       </Button>
                     </ModalFooter>
                   </Modal>

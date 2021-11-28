@@ -21,7 +21,7 @@ public class ReservationRepositorySupport {
 		this.query = new JPAQueryFactory(em);
 	}
 	
-	public List<AmountByCategory> statsReservation(String trainerName ) {
+	public List<AmountByCategory> statsAmountByCategory(String trainerName ) {
 		
 	return query
 			.select(Projections.fields(AmountByCategory.class,

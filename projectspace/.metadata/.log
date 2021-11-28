@@ -10085,3 +10085,159 @@ java.lang.NullPointerException: Cannot invoke "org.springsource.ide.eclipse.comm
 	at org.eclipse.osgi.internal.framework.BundleContextImpl.dispatchEvent(BundleContextImpl.java:935)
 	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:228)
 	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:339)
+
+!ENTRY org.eclipse.jface 2 0 2021-11-28 13:27:49.333
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2021-11-28 13:27:49.335
+!MESSAGE A conflict occurred for COMMAND+SHIFT+C:
+Binding(COMMAND+SHIFT+C,
+	ParameterizedCommand(Command(org.eclipse.tm4e.languageconfiguration.togglelinecommentcommand,Toggle Line Comment,
+		,
+		Category(org.eclipse.tm4e.languageconfiguration.category,TM4E Language Configuration,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6e62d151,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+Binding(COMMAND+SHIFT+C,
+	ParameterizedCommand(Command(org.springframework.tooling.boot.ls.ToggleComment,Toggle Comment,
+		,
+		Category(org.springframework.ide.eclipse.commands,Spring Generic Text Editor,Spring Language Server Commands,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3f64cf1f,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+
+!ENTRY org.eclipse.lsp4e 2 0 2021-11-29 02:21:50.170
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2092)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:38.803
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.oCmxeTSj
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:38.808
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.oCmxeTSj
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:38.809
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:38.809
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.oCmxeTSj => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:42.808
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:42.812
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@44a51fe3[org.springframework.tooling.boot.ls:1.28.0.202109130547(id=555)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:42.815
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.862
+!MESSAGE Boot LS startup time from start to initialized: 2030ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.929
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.vWZTZXqGisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.930
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.930
+!MESSAGE Scheduling initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.930
+!MESSAGE Scheduling initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.930
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.vWZTZXqG => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.931
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.941
+!MESSAGE classpath=178 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.943
+!MESSAGE buffering callback sts4.classpath.vWZTZXqG gagymservice false 178
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.943
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.945
+!MESSAGE classpath=104 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.946
+!MESSAGE buffering callback sts4.classpath.vWZTZXqG gateway false 104
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.946
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.953
+!MESSAGE classpath=361 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.956
+!MESSAGE buffering callback sts4.classpath.vWZTZXqG photo false 361
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.957
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.959
+!MESSAGE classpath=127 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.960
+!MESSAGE buffering callback sts4.classpath.vWZTZXqG service3 false 127
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:44.961
+!MESSAGE executing callback sts4.classpath.vWZTZXqG 4 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:27:45.651
+!MESSAGE executing callback sts4.classpath.vWZTZXqG SUCCESS [done]
+
+!ENTRY org.eclipse.lsp4e 2 0 2021-11-29 02:36:13.447
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2092)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:39:50.391
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:39:50.441
+!MESSAGE classpath=177 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:39:50.443
+!MESSAGE buffering callback sts4.classpath.vWZTZXqG gagymservice false 177
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:39:50.443
+!MESSAGE executing callback sts4.classpath.vWZTZXqG 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:39:50.467
+!MESSAGE executing callback sts4.classpath.vWZTZXqG SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:48:26.149
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:48:26.186
+!MESSAGE classpath=178 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:48:26.190
+!MESSAGE buffering callback sts4.classpath.vWZTZXqG gagymservice false 178
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:48:26.191
+!MESSAGE executing callback sts4.classpath.vWZTZXqG 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-11-29 02:48:26.361
+!MESSAGE executing callback sts4.classpath.vWZTZXqG SUCCESS [done]

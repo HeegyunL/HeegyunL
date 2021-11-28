@@ -13,24 +13,6 @@ import ColumnBar from "../../../components/chart/AmountsByCategories";
 import axios from "axios";
 
 const List = () => {
-  const [data, setData] = useState<{
-    ColumnBar: {
-      category: string;
-      amount: number;
-    }[];
-  }>();
-  // const getData = async () => {
-  //   const result = await axios.get<typeof data>(
-  //     "http://localhost:5050/sales-orders/stats?sd=1997-01-01&ed=1997-01-31"
-  //   );
-
-  //   setData(result.data);
-  // };
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
-
   const partner = useSelector((state: RootState) => state.partner);
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
@@ -43,10 +25,7 @@ const List = () => {
   return (
     <Layout>
       <div>
-        <div style={{ width: "50%" }}>
-          {/* <h2 style={{ textAlign: "center" }}>제품별 매출액</h2>
-          {data && <ColumnBar data={data.ColumnBar} />} */}
-        </div>
+        <div style={{ width: "50%" }}></div>
         <body>
           <div className=" mt-4" style={{ width: "80%", marginLeft: "0px" }}>
             <h4 className=" float-start">헬스장 정보</h4>
