@@ -91,6 +91,28 @@ const Tcreate = () => {
         }
       };
       reader.readAsDataURL(imageFile);
+    } else {
+      const radio = gymCodeRef.current.querySelector(
+        "input[type=radio]:checked"
+      ) as HTMLInputElement;
+      console.log("gymcode");
+      if (trainers) {
+        const item = { ...trainers };
+        item.gymCode = radio.value;
+        item.trainerName = trainerNameRef.current?.value;
+        item.trainerIntro = trainerIntroRef.current?.value;
+        (item.pt1TimePrice = pt1TimePriceRef.current?.value),
+          (item.pt10TimePrice = pt10TimePriceRef.current?.value),
+          (item.pt30TimePrice = pt30TimePriceRef.current?.value),
+          (item.yoga1TimePrice = yoga1TimePriceRef.current?.value),
+          (item.yoga10TimePrice = yoga10TimePriceRef.current?.value),
+          (item.yoga30TimePrice = yoga30TimePriceRef.current?.value),
+          (item.pilates1TimePrice = pilates1TimePriceRef.current?.value),
+          (item.pilates10TimePrice = pilates10TimePriceRef.current?.value),
+          (item.pilates30TimePrice = pilates30TimePriceRef.current?.value);
+        dispatch(requestModifyTrainer(item));
+        router.push("/partner/information/list");
+      }
     }
   };
   return (

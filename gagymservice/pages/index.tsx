@@ -103,19 +103,21 @@ const Index = () => {
                   className="table"
                   style={{
                     width: "40%",
-                    height: "300px",
                     marginRight: "100px",
                   }}
                 >
-                  <thead className="text-center my-2">
+                  <thead className="text-center my-2 ">
                     <tr>
                       <th scope="col">헬스장 명</th>
                     </tr>
                   </thead>
                   {partners.data.map((item, index) => (
-                    <tbody key={`partners-item-${index}`}>
+                    <tbody key={index}>
                       <Link href={`/partner/information/detail/${item.id}`}>
-                        <tr className="text-center my-2">
+                        <tr
+                          className="text-center my-2"
+                          style={{ height: "30px" }}
+                        >
                           <td>{item.gymName}</td>
                         </tr>
                       </Link>

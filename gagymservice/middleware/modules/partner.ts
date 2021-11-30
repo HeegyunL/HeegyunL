@@ -201,7 +201,7 @@ const partners = result.data.map(
     );
 
     const urlArr=partnerItem.gymPhoto.split("/");
-    const objectKey = urlArr[urlArr.length -1];
+    const objectKey = urlArr[urlArr.length - 1];
 
     // file api 호출해서 s3에 파일 삭제
     yield call(fileApi.remove, objectKey);

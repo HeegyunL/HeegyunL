@@ -71,6 +71,28 @@ const PartnerEdit = () => {
         }
       };
       reader.readAsDataURL(imageFile);
+    } else {
+      if (PartnerItem) {
+        const item = { ...PartnerItem };
+        item.gymName = gymNameRef.current?.value;
+        item.gymCoNum = gymCoNumRef.current?.value;
+        item.gymLocateSi = gymLocateSiRef.current?.value;
+        item.gymLocateGunGu = gymLocateGunGuRef.current?.value;
+        item.gymAddress = gymAddressRef.current?.value;
+        item.gymPhoneNum = gymPhoneNumRef.current?.value;
+        item.gymService = gymServiceRef.current?.value;
+        item.gymTime = gymTimeRef.current?.value;
+        item.gym1DayPrice = gym1DayPriceRef.current?.value;
+        item.gym3DayPrice = gym1DayPriceRef.current?.value;
+        item.gym7DayPrice = gym1DayPriceRef.current?.value;
+        item.gymMonthPrice = gymMonthPriceRef.current?.value;
+        item.gym3MonthPrice = gym3MonthPriceRef.current?.value;
+        item.gym6MonthPrice = gym6MonthPriceRef.current?.value;
+        item.gymYearPrice = gymYearPriceRef.current?.value;
+
+        dispatch(requestModifyPartner(item));
+        router.push("/partner/information/list");
+      }
     }
   };
 

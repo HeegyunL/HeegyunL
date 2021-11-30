@@ -63,7 +63,7 @@ const PartnerDetail = () => {
                 width={"300px"}
                 height={"300px"}
                 style={{
-                  marginLeft: "100px",
+                  marginLeft: "180px",
                   borderStyle: "solid",
                   borderWidth: "1px",
                   borderColor: "gray",
@@ -171,7 +171,7 @@ const PartnerDetail = () => {
                 className="col me-3 text-nowrap text-center"
                 style={{ width: "200px" }}
               >
-                주소
+                주 소
               </h4>
               <p
                 style={{
@@ -359,15 +359,15 @@ const PartnerDetail = () => {
               </p>
             </div>
             {/* 가격 */}
-            <div>
+            <div style={{ marginLeft: "80px" }}>
               <h4
-                className="col text-nowrap text-center"
-                style={{ width: "434px" }}
+                className="col  mt-5 text-nowrap "
+                style={{ width: "484px", marginLeft: "120px" }}
               >
                 가 격
               </h4>
               <div className="mt-3 ms-5 d-flex">
-                <table className=" table ms-5 " style={{ width: "780px" }}>
+                <table className=" table ms-5 mt-5 " style={{ width: "780px" }}>
                   <thead>
                     <tr>
                       <th className="text-center me-3" scope="col">
