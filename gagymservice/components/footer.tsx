@@ -4,11 +4,10 @@ import { useRouter } from "next/router";
 import { Navbar, Container, Nav } from "react-bootstrap";
 
 const Footer = () => {
-  
   const router = useRouter();
   return (
-    <footer className="">
-      <div className={styles.div1}>
+    <footer className="mt-5">
+      <div className={styles.diwv1}>
         {/*-----------------div2-----------------*/}
         <div className={styles.div2}>
           <div className={styles.div22}>

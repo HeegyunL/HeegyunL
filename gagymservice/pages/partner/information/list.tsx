@@ -29,7 +29,7 @@ const List = () => {
         <body>
           <div className=" mt-4" style={{ width: "80%", marginLeft: "0px" }}>
             <h4 className=" float-start">헬스장 정보</h4>
-            <table className="table" style={{ width: "1025px" }}>
+            <table className="table table-hover" style={{ width: "1025px" }}>
               <thead>
                 <tr>
                   <th scope="col">헬스장명</th>

@@ -34,15 +34,15 @@ const List = () => {
     }
   }, [dispatch, diary.isFetched, diary.pageSize]);
 
-  const handlePageChanged = (page: number) => {
-    console.log("--page: " + page);
-    dispatch(
-      requestFetchPagingDiary({
-        page,
-        size: diary.pageSize,
-      })
-    );
-  };
+  function Search({ onSubmit }: any) {
+    const handleSubmit = (event: {
+      preventDefault: () => void;
+      target: { elements: { filter: { value: any } } };
+    }) => {
+      event.preventDefault();
+      onSubmit(event.target.elements.filter.value);
+    };
+  }
 
   const handlePageSizeChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
     console.log(e.currentTarget.value);
@@ -61,34 +61,34 @@ const List = () => {
           <div className={styles.div}>
             {/*>PT일지 목록*/}
             <div>
-              <div className="mx-auto">
-                <div className="d-flex flex-direction-column align-items-baseline mt-5">
-                  <p className={styles.p}>PT일지 목록</p>
+              <div
+                className=" mt-5"
+                style={{ width: "100%", marginLeft: "0px" }}
+              >
+                <h4 className=" float-start">PT일지 목록</h4>
+                <div className="d-flex justify-content-end align-items-center">
+                  <select
+                    className="form-select form-select-sm  p-1"
+                    style={{ width: "55px", height: "30px" }}
+                    onChange={(e) => {
+                      handlePageSizeChanged(e);
+                    }}
+                  >
+                    {[3, 5, 10, 30].map((size, index) => (
+                      <option
+                        value={size}
+                        selected={diary.pageSize === size}
+                        key={index}
+                      >
+                        {size}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div className="d-flex"></div>
               </div>
-
-              <div className="d-flex justify-content-end align-items-center">
-                <select
-                  className="form-select form-select-sm mx-1 p-1"
-                  style={{ width: "55px", height: "30px" }}
-                  onChange={(e) => {
-                    handlePageSizeChanged(e);
-                  }}
-                >
-                  {[3, 5, 10, 30].map((size, index) => (
-                    <option
-                      value={size}
-                      selected={diary.pageSize === size}
-                      key={index}
-                    >
-                      {size}
-                    </option>
-                  ))}
-                </select>
-              </div>
             </div>
-            <table className="table table-hover">
+            <table className="table table-hover mt-4">
               <thead className="display-flex;">
                 <tr>
                   <th>날짜</th>

@@ -8,7 +8,7 @@ const AppBar = () => {
       bg=""
       expand="lg"
       className="mx-auto"
-      style={{ width: "90%", borderBottom: "solid" }}
+      style={{ width: "100%", borderBottom: "solid" }}
     >
       <Container className="w-100">
         <Navbar.Brand className="ms-5">
@@ -56,31 +56,29 @@ const AppBar = () => {
             </button>
           </div>
           <div>
-            <Nav className="me-auto">
+            <Nav className="me-auto d-flex">
               <Nav.Link>
                 <Link href="/">
-                  <a href="/" className="">
-                    MAIN
-                  </a>
+                  <a href="/">HOME</a>
                 </Link>
-              </Nav.Link>
-              <Nav.Link>
                 <Link href="/partner/information/list">
-                  <a href="/partner/information/Create" className="">
+                  <a
+                    style={{ marginLeft: "1vw" }}
+                    href="/partner/information/list"
+                  >
                     헬스장 정보
                   </a>
                 </Link>
-              </Nav.Link>
-              <Nav.Link>
                 <Link href="/partner/reservation/list">
-                  <a href="/partner/information/detail/id" className="">
+                  <a
+                    href="/partner/reservation/list"
+                    style={{ marginLeft: "1vw" }}
+                  >
                     예약 내역
                   </a>
                 </Link>
-              </Nav.Link>
-              <Nav.Link>
                 <Link href="/partner/ptDiary/list">
-                  <a href="/partner/ptDiary/list" className="">
+                  <a href="/partner/ptDiary/list" style={{ marginLeft: "1vw" }}>
                     PT 일지
                   </a>
                 </Link>

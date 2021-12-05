@@ -54,16 +54,16 @@ const PartnerDetail = () => {
     <Layout>
       <body>
         {partners && (
-          <div className="mx-auto mt-5 " style={{ width: "900px" }}>
+          <div className="mx-auto mt-5 " style={{ width: "100%" }}>
             {/* 헬스장 사진 */}
             <div className="d-flex">
               <img
                 src={partners.gymPhoto}
                 alt={partners.fileName}
-                width={"300px"}
-                height={"300px"}
+                width={"300vw"}
+                height={"300vw"}
                 style={{
-                  marginLeft: "180px",
+                  marginLeft: "18%",
                   borderStyle: "solid",
                   borderWidth: "1px",
                   borderColor: "gray",
@@ -82,7 +82,7 @@ const PartnerDetail = () => {
                   </h4>
                   <p
                     style={{
-                      width: "400px",
+                      width: "40%",
                       height: "45px",
                       borderBlockEndWidth: "4px",
                     }}
@@ -100,7 +100,7 @@ const PartnerDetail = () => {
                   </h4>
                   <p
                     style={{
-                      width: "400px",
+                      width: "40%",
                       height: "45px",
                       borderBlockEndWidth: "4px",
                     }}
@@ -118,7 +118,7 @@ const PartnerDetail = () => {
                   </h4>
                   <p
                     style={{
-                      width: "400px",
+                      width: "40%",
                       height: "45px",
                       borderBlockEndWidth: "4px",
                     }}
@@ -136,7 +136,7 @@ const PartnerDetail = () => {
                   </h4>
                   <p
                     style={{
-                      width: "400px",
+                      width: "40%",
                       height: "45px",
                       borderBlockEndWidth: "4px",
                     }}
@@ -367,7 +367,7 @@ const PartnerDetail = () => {
                 가 격
               </h4>
               <div className="mt-3 ms-5 d-flex">
-                <table className=" table ms-5 mt-5 " style={{ width: "780px" }}>
+                <table className=" table ms-5 mt-5 " style={{ width: "78%" }}>
                   <thead>
                     <tr>
                       <th className="text-center me-3" scope="col">

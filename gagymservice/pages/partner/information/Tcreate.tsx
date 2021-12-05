@@ -107,7 +107,7 @@ const Tcreate = () => {
               className="btn-group ms-2"
               role="group"
               aria-label="Basic checkbox toggle button group"
-              style={{ width: "400px", height: "2rem" }}
+              style={{ width: "100%", height: "2rem" }}
               ref={gymCodeRef}
             >
               {partnerData.data.map((item, index) => (

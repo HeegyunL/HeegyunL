@@ -12,6 +12,7 @@ import { requestFetchPagingDiary } from "../middleware/modules/diary";
 import { requestFetchPagingReservation } from "../middleware/modules/reservation";
 import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
+import styles from "../styles/main.module.css";
 // import Chart from "react-apexcharts";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -86,58 +87,51 @@ const Index = () => {
 
   return (
     <Layout>
-      <div>
-        <body>
-          <div className="mx-auto" style={{ width: "900px" }}>
-            <div className="justify-content-md-end">
-              {/* <h4 className="mb-3 float-start">헬스장 정보</h4> */}
-              <Link href="/partner/information/detail">
-                <a>
-                  {/* <button className="btn btn-primary float-end btn-sm">
-                    상세 보기
-                  </button> */}
-                </a>
-              </Link>
-              <div className="d-flex">
-                <table
-                  className="table"
-                  style={{
-                    width: "40%",
-                    marginRight: "100px",
-                  }}
-                >
-                  <thead className="text-center my-2 ">
-                    <tr>
-                      <th scope="col">헬스장 명</th>
-                    </tr>
-                  </thead>
-                  {partners.data.map((item, index) => (
-                    <tbody key={index}>
-                      <Link href={`/partner/information/detail/${item.id}`}>
-                        <tr
-                          className="text-center my-2"
-                          style={{ height: "30px" }}
-                        >
-                          <td>{item.gymName}</td>
-                        </tr>
-                      </Link>
-                    </tbody>
-                  ))}
-                </table>
-                <div>
-                  {data && (
-                    <Chart
-                      options={data?.options}
-                      series={data?.series}
-                      type="bar"
-                      width="400px"
-                      height="350px"
-                    />
-                  )}
-                </div>
+      <body>
+        <div className={styles.body}>
+          <div className="justify-content-md">
+            <div className="d-flex ">
+              <table
+                className="table table-hover"
+                style={{
+                  width: "40%",
+                  marginRight: "5vw",
+                }}
+              >
+                <thead className="text-center  ">
+                  <tr>
+                    <th scope="col">헬스장 명</th>
+                  </tr>
+                </thead>
+                {partners.data.map((item, index) => (
+                  <tbody key={index}>
+                    <Link href={`/partner/information/detail/${item.id}`}>
+                      <tr
+                        className="text-center my-2"
+                        style={{ height: "30px" }}
+                      >
+                        <td>{item.gymName}</td>
+                      </tr>
+                    </Link>
+                  </tbody>
+                ))}
+              </table>
+              <div>
+                {data && (
+                  <Chart
+                    options={data?.options}
+                    series={data?.series}
+                    type="bar"
+                    className={styles.Chart}
+                    height="350px"
+                  />
+                )}
               </div>
             </div>
-            <div className="mt-5">
+          </div>
+          <div className="d-flex justify-content-bestween">
+            {/* 예약목록 */}
+            <div className="mt-5" style={{ width: "45%" }}>
               <h4 className=" float-start">예약 목록</h4>
               <Link href={`/partner/reservation/list`}>
                 <a>
@@ -146,14 +140,18 @@ const Index = () => {
                   </button>
                 </a>
               </Link>
-              <table className="table mx-auto">
+              <table className="table mx-auto table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">이름</th>
-                    <th scope="col">헬스장명</th>
-                    <th scope="col">전화번호</th>
-                    <th scope="col">희망운영권</th>
-                    <th scope="col">희망 강사</th>
+                    <th className="text-nowrap" scope="col">
+                      이름
+                    </th>
+                    <th className="text-nowrap" scope="col">
+                      희망운영권
+                    </th>
+                    <th className="text-nowrap" scope="col">
+                      희망 강사
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -163,9 +161,7 @@ const Index = () => {
                       key={`partners-item-${index}`}
                     >
                       <tr key={`partners-item-${index}`}>
-                        <td>{item.memberName}</td>
-                        <td>{item.gymName}</td>
-                        <td>{item.memberPhone}</td>
+                        <td className="text-nowrap">{item.memberName}</td>
                         <td>{item.boughtService}</td>
                         <td>{item.trainerName}</td>
                       </tr>
@@ -174,7 +170,8 @@ const Index = () => {
                 </tbody>
               </table>
             </div>
-            <div className="mt-5">
+            {/* Pt일지 */}
+            <div className="mt-5 " style={{ width: "45%", marginLeft: "5vw" }}>
               <h4 className=" float-start">PT 일지</h4>
               <Link href="/partner/ptDiary/list">
                 <a>
@@ -183,14 +180,11 @@ const Index = () => {
                   </button>
                 </a>
               </Link>
-              <table className="table mx-auto">
+              <table className="table mx-auto table-hover">
                 <thead>
                   <tr>
                     <th scope="col">이름</th>
-                    <th scope="col">식단</th>
-                    <th scope="col">운동</th>
                     <th scope="col">문의사항</th>
-                    <th scope="col">피드백</th>
                   </tr>
                 </thead>
                 {diarys.data.map((item, index) => (
@@ -198,10 +192,7 @@ const Index = () => {
                     <Link href={`/partner/ptDiary/detail/${item.id}`}>
                       <tr>
                         <td>{item.memberName}</td>
-                        <td>{item.diaryMorning}</td>
-                        <td>{item.diaryRoutine}</td>
                         <td>{item.diaryRequest}</td>
-                        <td>{item.trainerFeedback}</td>
                       </tr>
                     </Link>
                   </tbody>
@@ -209,8 +200,8 @@ const Index = () => {
               </table>
             </div>
           </div>
-        </body>
-      </div>
+        </div>
+      </body>
     </Layout>
   );
 };

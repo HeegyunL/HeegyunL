@@ -48,11 +48,11 @@ const List = () => {
     <Layout>
       <div>
         <body>
-          <div className=" mt-4" style={{ width: "80%", marginLeft: "0px" }}>
+          <div className=" mt-5" style={{ width: "100%", marginLeft: "0px" }}>
             <h4 className=" float-start">예약 정보</h4>
             <div className="d-flex justify-content-end align-items-center">
               <select
-                className="form-select form-select-sm mx-1 p-1"
+                className="form-select form-select-sm  "
                 style={{ width: "55px", height: "30px" }}
                 onChange={(e) => {
                   handlePageSizeChanged(e);
@@ -69,7 +69,10 @@ const List = () => {
                 ))}
               </select>
             </div>
-            <table className="table" style={{ width: "1025px" }}>
+            <table
+              className="table table-hover mt-4"
+              style={{ width: "1025px" }}
+            >
               <thead>
                 <tr>
                   <th scope="col">이름</th>
@@ -87,10 +90,14 @@ const List = () => {
                       router.push(`/partner/reservation/detail/${item.id}`);
                     }}
                   >
-                    <td>{item.memberName}</td>
+                    <td style={{ cursor: "pointer", color: "rgb(3, 48, 129)" }}>
+                      {item.memberName}
+                    </td>
                     <td>{item.gymName}</td>
                     <td>{item.memberPhone}</td>
-                    <td>{item.boughtService}</td>
+                    <td style={{ cursor: "pointer", color: "red" }}>
+                      {item.boughtService}
+                    </td>
                     <td>{item.trainerName}</td>
                   </tr>
                 ))}

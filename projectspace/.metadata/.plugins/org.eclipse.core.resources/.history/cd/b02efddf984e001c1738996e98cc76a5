@@ -1,9 +1,0 @@
-package com.git.gagymservice.chart;
-
-import lombok.Data;
-
-@Data
-public class AmountByCategory {
-	private String category;
-	private Integer amount;
-}

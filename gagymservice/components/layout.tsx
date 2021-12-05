@@ -15,11 +15,9 @@ export default function Layout({ children }: LayoutProps) {
     <>
       <Head>
         <title>Myworkspace</title>
-      </Head>
-      <header>
         <AppBar />
-      </header>
-
+      </Head>
+      {/* <header></header> */}
       <main className={styles.main}>
         <article className="d-flex mt-3">
           <Sidebar />
