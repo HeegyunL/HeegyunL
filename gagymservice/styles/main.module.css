@@ -62,7 +62,8 @@
 
   .span2 {
     border-radius: 0 0 5px 5px;
-
+    font-size: 25px;
+    font-weight: bold;
     width: 50%;
     margin: auto;
     display: flex;
