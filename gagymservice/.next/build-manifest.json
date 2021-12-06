@@ -30,15 +30,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/partner/ptDiary/list": [
+    "/partner/information/list": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/partner/ptDiary/list.js"
-    ],
-    "/partner/reservation/list": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/partner/reservation/list.js"
+      "static/chunks/pages/partner/information/list.js"
     ]
   },
   "ampFirstPages": []

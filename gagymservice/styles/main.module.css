@@ -1,6 +1,6 @@
 .body {
   margin: auto;
-  width: 100%;
+  width: 150%;
 }
 .Chart {
   width: 100%;
@@ -12,5 +12,63 @@
   }
   .Chart {
     width: 150%;
+  }
+  .divspan {
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 1px gray;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-top: none;
+    border-bottom: none;
+
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+  }
+
+  .divspan:hover {
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 1px gray;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+
+  .span1 {
+    margin-top: 5vh;
+    border-radius: 5px 5px 0 0;
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(18, 17, 100);
+    color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .span2 {
+    border-radius: 0 0 5px 5px;
+
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    border: solid black;
+    border-width: 1px;
+    text-align: center;
   }
 }

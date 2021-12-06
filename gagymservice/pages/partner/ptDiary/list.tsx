@@ -58,35 +58,26 @@ const List = () => {
     <div>
       <Layout>
         <main className={styles.main}>
-          <div className={styles.div}>
-            {/*>PT일지 목록*/}
-            <div>
-              <div
-                className=" mt-5"
-                style={{ width: "100%", marginLeft: "0px" }}
+          <div className=" mt-5" style={{ width: "100%", marginLeft: "0px" }}>
+            <h4 className=" float-start">예약 정보</h4>
+            <div className="d-flex justify-content-end align-items-center">
+              <select
+                className="form-select form-select-sm  "
+                style={{ width: "55px", height: "30px" }}
+                onChange={(e) => {
+                  handlePageSizeChanged(e);
+                }}
               >
-                <h4 className=" float-start">PT일지 목록</h4>
-                <div className="d-flex justify-content-end align-items-center">
-                  <select
-                    className="form-select form-select-sm  p-1"
-                    style={{ width: "55px", height: "30px" }}
-                    onChange={(e) => {
-                      handlePageSizeChanged(e);
-                    }}
+                {[3, 5, 10, 30].map((size, index) => (
+                  <option
+                    value={size}
+                    selected={diary.pageSize === size}
+                    key={index}
                   >
-                    {[3, 5, 10, 30].map((size, index) => (
-                      <option
-                        value={size}
-                        selected={diary.pageSize === size}
-                        key={index}
-                      >
-                        {size}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="d-flex"></div>
-              </div>
+                    {size}
+                  </option>
+                ))}
+              </select>
             </div>
             <table className="table table-hover mt-4">
               <thead className="display-flex;">

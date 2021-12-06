@@ -91,31 +91,42 @@ const Index = () => {
         <div className={styles.body}>
           <div className="justify-content-md">
             <div className="d-flex ">
-              <table
-                className="table table-hover"
+              <div
                 style={{
                   width: "40%",
                   marginRight: "5vw",
                 }}
               >
-                <thead className="text-center  ">
-                  <tr>
-                    <th scope="col">헬스장 명</th>
-                  </tr>
-                </thead>
-                {partners.data.map((item, index) => (
-                  <tbody key={index}>
-                    <Link href={`/partner/information/detail/${item.id}`}>
-                      <tr
-                        className="text-center my-2"
-                        style={{ height: "30px" }}
-                      >
-                        <td>{item.gymName}</td>
-                      </tr>
-                    </Link>
-                  </tbody>
-                ))}
-              </table>
+                <table
+                  className="table table-hover "
+                  style={{
+                    width: "100%",
+                  }}
+                >
+                  <thead
+                    className="text  "
+                    style={{ borderTop: "none", borderBottom: "none" }}
+                  >
+                    <tr className={styles.span1}>
+                      <th scope="col">헬스장 명</th>
+                    </tr>
+                  </thead>
+                  {partners.data.map((item, index) => (
+                    <tbody
+                      key={index}
+                      style={{ borderTop: "none", borderBottom: "none" }}
+                    >
+                      <Link href={`/partner/information/detail/${item.id}`}>
+                        <tr style={{ borderTop: "none", borderBottom: "none" }}>
+                          <td className={styles.divspan}>
+                            <span className={styles.span2}>{item.gymName}</span>
+                          </td>
+                        </tr>
+                      </Link>
+                    </tbody>
+                  ))}
+                </table>
+              </div>
               <div>
                 {data && (
                   <Chart
@@ -129,9 +140,12 @@ const Index = () => {
               </div>
             </div>
           </div>
-          <div className="d-flex justify-content-bestween">
+          <div
+            className="d-flex justify-content-bestween"
+            style={{ width: "100%" }}
+          >
             {/* 예약목록 */}
-            <div className="mt-5" style={{ width: "45%" }}>
+            <div className="mt-5" style={{ width: "40%" }}>
               <h4 className=" float-start">예약 목록</h4>
               <Link href={`/partner/reservation/list`}>
                 <a>
@@ -171,7 +185,7 @@ const Index = () => {
               </table>
             </div>
             {/* Pt일지 */}
-            <div className="mt-5 " style={{ width: "45%", marginLeft: "5vw" }}>
+            <div className="mt-5 " style={{ width: "35%", marginLeft: "5vw" }}>
               <h4 className=" float-start">PT 일지</h4>
               <Link href="/partner/ptDiary/list">
                 <a>
