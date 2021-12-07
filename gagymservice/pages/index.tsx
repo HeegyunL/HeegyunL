@@ -89,20 +89,15 @@ const Index = () => {
     <Layout>
       <body>
         <div className={styles.body}>
-          <div className="justify-content-md">
-            <div className="d-flex ">
+          <div className="justify-content-around">
+            <div className={styles.flex}>
               <div
                 style={{
-                  width: "40%",
-                  marginRight: "5vw",
+                  width: "50%",
+                  // marginRight: "5vw",
                 }}
               >
-                <table
-                  className="table table-hover "
-                  style={{
-                    width: "100%",
-                  }}
-                >
+                <table className={styles.table}>
                   <thead
                     className="text  "
                     style={{ borderTop: "none", borderBottom: "none" }}
@@ -140,12 +135,9 @@ const Index = () => {
               </div>
             </div>
           </div>
-          <div
-            className="d-flex justify-content-bestween"
-            style={{ width: "100%" }}
-          >
+          <div className={styles.flex} style={{ width: "80%" }}>
             {/* 예약목록 */}
-            <div className="mt-5" style={{ width: "40%" }}>
+            <div className="mt-5" style={{ width: "100%" }}>
               <h4 className=" float-start">예약 목록</h4>
               <Link href={`/partner/reservation/list`}>
                 <a>
@@ -185,7 +177,7 @@ const Index = () => {
               </table>
             </div>
             {/* Pt일지 */}
-            <div className="mt-5 " style={{ width: "35%", marginLeft: "5vw" }}>
+            <div className="mt-5 " style={{ width: "100%", marginLeft: "3vw" }}>
               <h4 className=" float-start">PT 일지</h4>
               <Link href="/partner/ptDiary/list">
                 <a>
@@ -197,8 +189,12 @@ const Index = () => {
               <table className="table mx-auto table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">이름</th>
-                    <th scope="col">문의사항</th>
+                    <th className="text-nowrap" scope="col">
+                      이름
+                    </th>
+                    <th className="text-nowrap" scope="col">
+                      문의사항
+                    </th>
                   </tr>
                 </thead>
                 {diarys.data.map((item, index) => (

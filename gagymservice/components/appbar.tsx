@@ -2,6 +2,7 @@ import { bottom } from "@popperjs/core";
 import Link from "next/link";
 import { Navbar, Container, Nav, NavLink } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import styles from "../components/layout.module.css";
 const AppBar = () => {
   return (
     <Navbar
