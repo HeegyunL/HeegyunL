@@ -11,6 +11,8 @@ import { stringify } from "querystring";
 import columnBar from "../../../components/chart/AmountsByCategories";
 import ColumnBar from "../../../components/chart/AmountsByCategories";
 import axios from "axios";
+import styles from "../../../styles/main.module.css";
+import Link from "next/link";
 
 const List = () => {
   const partner = useSelector((state: RootState) => state.partner);
@@ -24,41 +26,39 @@ const List = () => {
 
   return (
     <Layout>
-      <div>
-        <div style={{ width: "50%" }}></div>
-        <body>
-          <div className=" mt-4" style={{ width: "80%", marginLeft: "0px" }}>
-            <h4 className=" float-start">헬스장 정보</h4>
-            <table className="table table-hover" style={{ width: "1025px" }}>
-              <thead>
-                <tr>
-                  <th scope="col">헬스장명</th>
-                  <th scope="col">지역</th>
-                  <th scope="col">전화번호</th>
-                  <th scope="col">운영 시간</th>
-                </tr>
-              </thead>
-              <tbody className="tbody">
-                {partner.data.map((item, index) => (
-                  <tr
-                    key={index}
-                    onClick={() => {
-                      router.push(`/partner/information/detail/${item.id}`);
+      <div className={styles.hover}>
+        {partner.data.map((item, index) => (
+          <div key={index} style={{ borderTop: "none", borderBottom: "none" }}>
+            <Link href={`/partner/information/detail/${item.id}`}>
+              <div
+                className="d-flex"
+                style={{
+                  marginLeft: "12%",
+                }}
+              >
+                <div className={styles.divspan}>
+                  <img
+                    className={styles.image}
+                    src={item.gymPhoto}
+                    alt={item.fileName}
+                    style={{
+                      borderStyle: "solid",
+                      borderWidth: "1px",
+                      borderColor: "gray",
+                      boxShadow: "2px 3px 5px 0px",
                     }}
-                  >
-                    <td>{item.gymName}</td>
-                    <td>
-                      {item.gymLocateSi}
-                      {item.gymLocateGunGu}
-                    </td>
-                    <td>{item.gymPhoneNum}</td>
-                    <td>{item.gymTime}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    // className="mx-auto"
+                  />
+                  <div style={{ fontSize: "Larger" }}>{item.gymName}</div>
+                  <div style={{ fontSize: "Larger" }}>
+                    {item.gymLocateSi} {item.gymLocateGunGu}
+                  </div>
+                  <div style={{ fontSize: "Larger" }}>{item.gymPhoneNum}</div>
+                </div>
+              </div>
+            </Link>
           </div>
-        </body>
+        ))}
       </div>
     </Layout>
   );

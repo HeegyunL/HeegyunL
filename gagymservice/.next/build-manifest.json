@@ -30,10 +30,30 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/partner/reservation/list": [
+    "/partner/information/Create": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/partner/reservation/list.js"
+      "static/chunks/pages/partner/information/Create.js"
+    ],
+    "/partner/information/Tcreate": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/partner/information/Tcreate.js"
+    ],
+    "/partner/information/list": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/partner/information/list.js"
+    ],
+    "/partner/ptDiary/detail/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/partner/ptDiary/detail/[id].js"
+    ],
+    "/partner/ptDiary/list": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/partner/ptDiary/list.js"
     ]
   },
   "ampFirstPages": []
