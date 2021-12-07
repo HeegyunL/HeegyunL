@@ -105,12 +105,10 @@ const Index = () => {
                     >
                       <div className={styles.divspan}>
                         <img
+                          className={styles.image}
                           src={item.gymPhoto}
                           alt={item.fileName}
-                          width={"300vw"}
-                          height={"300vw"}
                           style={{
-                            // marginLeft: "30%",
                             borderStyle: "solid",
                             borderWidth: "1px",
                             borderColor: "gray",
