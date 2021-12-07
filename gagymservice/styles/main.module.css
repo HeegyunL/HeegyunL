@@ -63,7 +63,7 @@
 
 @media (min-width: 1080px) {
   .body {
-    width: 250%;
+    width: 140%;
   }
   .flex {
     width: 100%;
@@ -72,10 +72,11 @@
     margin: auto;
   }
   .table {
-    width: 70%;
+    width: 100%;
   }
   .Chart {
     width: 100%;
+    margin-left: 10%;
   }
   .divspan {
     border-radius: 5px;
@@ -128,16 +129,19 @@
   }
 
   .span2 {
-    border-radius: 0 0 5px 5px;
+    /* border-radius: 0 0 5px 5px; */
     white-space: nowrap;
     font-size: 25px;
     font-weight: bold;
-    width: 50%;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
-    border: solid black;
+    /* border: solid black; */
     border-width: 1px;
     text-align: center;
+  }
+  .h4 {
+    margin-left: 10%;
   }
 }

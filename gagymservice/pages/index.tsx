@@ -89,53 +89,53 @@ const Index = () => {
     <Layout>
       <body>
         <div className={styles.body}>
-          <div className="justify-content-around">
-            <div className={styles.flex}>
-              <div
-                style={{
-                  width: "50%",
-                  // marginRight: "5vw",
-                }}
-              >
-                <table className={styles.table}>
-                  <thead
-                    className="text  "
-                    style={{ borderTop: "none", borderBottom: "none" }}
-                  >
-                    <tr className={styles.span1}>
-                      <th scope="col">헬스장 명</th>
-                    </tr>
-                  </thead>
-                  {partners.data.map((item, index) => (
-                    <tbody
-                      key={index}
-                      style={{ borderTop: "none", borderBottom: "none" }}
+          <div className={styles.flex}>
+            <div className="d-flex">
+              {partners.data.map((item, index) => (
+                <div
+                  key={index}
+                  style={{ borderTop: "none", borderBottom: "none" }}
+                >
+                  <Link href={`/partner/information/detail/${item.id}`}>
+                    <div
+                      className="d-flex"
+                      style={{
+                        marginLeft: "12%",
+                      }}
                     >
-                      <Link href={`/partner/information/detail/${item.id}`}>
-                        <tr style={{ borderTop: "none", borderBottom: "none" }}>
-                          <td className={styles.divspan}>
-                            <span className={styles.span2}>{item.gymName}</span>
-                          </td>
-                        </tr>
-                      </Link>
-                    </tbody>
-                  ))}
-                </table>
-              </div>
-              <div>
-                {data && (
-                  <Chart
-                    options={data?.options}
-                    series={data?.series}
-                    type="bar"
-                    className={styles.Chart}
-                    height="350px"
-                  />
-                )}
-              </div>
+                      <div className={styles.divspan}>
+                        <img
+                          src={item.gymPhoto}
+                          alt={item.fileName}
+                          width={"300vw"}
+                          height={"300vw"}
+                          style={{
+                            // marginLeft: "30%",
+                            borderStyle: "solid",
+                            borderWidth: "1px",
+                            borderColor: "gray",
+                            boxShadow: "2px 3px 5px 0px",
+                          }}
+                          // className="mx-auto"
+                        />
+                        <div style={{ fontSize: "Larger" }}>{item.gymName}</div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))}
             </div>
+            {data && (
+              <Chart
+                options={data?.options}
+                series={data?.series}
+                type="bar"
+                className={styles.Chart}
+                height="350px"
+              />
+            )}
           </div>
-          <div className={styles.flex} style={{ width: "80%" }}>
+          <div className={styles.flex} style={{ width: "100%" }}>
             {/* 예약목록 */}
             <div className="mt-5" style={{ width: "100%" }}>
               <h4 className=" float-start">예약 목록</h4>
