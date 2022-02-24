@@ -92,8 +92,11 @@ const Index = () => {
           <div className="row">
             <div className="col">
               {partners.data.map((item, index) => (
-                <Link href={`/partner/information/detail/${item.id}`}>
-                  <div>
+                <Link
+                  href={`/partner/information/detail/${item.id}`}
+                  key={index}
+                >
+                  <div key={index}>
                     <div
                       className="card mb-3 bg-light"
                       style={{
