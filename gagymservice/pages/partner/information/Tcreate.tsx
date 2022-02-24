@@ -97,9 +97,8 @@ const Tcreate = () => {
 
   return (
     <Layout>
-      <body>
-        <div className={styles.body}>
-          <div className="mt-5"></div>
+      <body style={{ background: "#f8f9fa" }}>
+        <div className="mx-auto ">
           {/* 헬스장 이름 */}
           <div className={styles.div}>
             <p>헬스장 이름</p>
@@ -107,7 +106,7 @@ const Tcreate = () => {
               className="btn-group ms-2"
               role="group"
               aria-label="Basic checkbox toggle button group"
-              style={{ width: "100%", height: "2rem" }}
+              style={{ height: "2rem" }}
               ref={gymCodeRef}
             >
               {partnerData.data.map((item, index) => (

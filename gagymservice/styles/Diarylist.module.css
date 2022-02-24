@@ -17,12 +17,11 @@
   text-decoration-color: rgb(3, 48, 129);
 }
 .main {
-  width: 150%;
+  height: 80vh;
+  width: 80%;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin-left: 5%;
 }
 
@@ -43,7 +42,7 @@
   border-radius: 50px;
   border-style: double;
   border-width: 4.5px;
-  background: white;
+  background: rgb(155, 151, 151);
   color: #0100a4;
   border-color: #0100a4;
   font-size: 13px;

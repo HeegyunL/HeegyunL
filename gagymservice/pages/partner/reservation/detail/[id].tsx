@@ -38,8 +38,8 @@ const Reservationdetail = () => {
   return (
     <Layout>
       {reservationItem && (
-        <body>
-          <div className="mx-auto mt-5" style={{ width: "850px" }}>
+        <body className="bg-light">
+          <div className="mx-auto mt-5" style={{ width: "60vw" }}>
             <h4 className="mt-5 text-center"> 예약 내역</h4>
             <div className="d-flex mt-5">
               <h4

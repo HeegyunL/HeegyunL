@@ -16,12 +16,13 @@
   /* margin-bottom: 0.5em; */
 }
 .input {
-  width: 50%;
+  width: 30%;
   height: 30px;
   border-left-width: 0;
   border-right-width: 0;
   border-top-width: 0;
   border-bottom-width: 1;
+  background: #f8f9fa;
 }
 .button {
   text-align: center;

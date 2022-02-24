@@ -87,40 +87,73 @@ const Index = () => {
 
   return (
     <Layout>
-      <body>
-        <div className={styles.body}>
-          <div className={styles.flex}>
-            <div className="d-flex">
+      <body className="bg-light ">
+        <div className="">
+          <div className="row">
+            <div className="col">
               {partners.data.map((item, index) => (
-                <div
-                  key={index}
-                  style={{ borderTop: "none", borderBottom: "none" }}
-                >
-                  <Link href={`/partner/information/detail/${item.id}`}>
+                <Link href={`/partner/information/detail/${item.id}`}>
+                  <div>
                     <div
-                      className="d-flex"
+                      className="card mb-3 bg-light"
                       style={{
-                        marginLeft: "12%",
+                        border: 0,
+                        outline: 0,
                       }}
                     >
-                      <div className={styles.divspan}>
-                        <img
-                          className={styles.image}
-                          src={item.gymPhoto}
-                          alt={item.fileName}
-                          style={{
-                            borderStyle: "solid",
-                            borderWidth: "1px",
-                            borderColor: "gray",
-                            boxShadow: "2px 3px 5px 0px",
-                          }}
-                          // className="mx-auto"
-                        />
-                        <div style={{ fontSize: "Larger" }}>{item.gymName}</div>
+                      <div className="row g-0 mt-5">
+                        <div className="col-md-4">
+                          <img
+                            src={item.gymPhoto}
+                            alt={item.fileName}
+                            className="img-fluid rounded-start"
+                            style={{
+                              borderStyle: "solid",
+                              borderWidth: "1px",
+                              borderColor: "gray",
+                              boxShadow: "2px 3px 5px 0px",
+                            }}
+                          ></img>
+                        </div>
+                        <div className="col-md-6 ms-3">
+                          <div className="card-body ">
+                            <h5 className="card-title fs-3">{item.gymName}</h5>
+                            <p className="card-text fs-5">
+                              <p>
+                                {item.gymLocateSi} / {item.gymLocateGunGu}
+                              </p>
+
+                              <table className="w-100">
+                                <thead>
+                                  <th>
+                                    <td className="text-danger fs-4">Price</td>
+                                  </th>
+                                  <tr>
+                                    <td>Month</td>
+                                    <td>3Month</td>
+                                    <td>Day</td>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr className=" border-top">
+                                    <td>{item.gymMonthPrice}won</td>
+                                    <td>{item.gym3MonthPrice}won</td>
+                                    <td>{item.gym1DayPrice}won</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </p>
+                            <p className="card-text">
+                              <small className="text-muted fs-5">
+                                {item.gymPhoneNum}
+                              </small>
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               ))}
             </div>
             {data && (
@@ -128,12 +161,12 @@ const Index = () => {
                 options={data?.options}
                 series={data?.series}
                 type="bar"
-                className={styles.Chart}
+                className="col mt-4"
                 height="350px"
               />
             )}
           </div>
-          <div className={styles.flex} style={{ width: "100%" }}>
+          <div className="d-flex" style={{ width: "100%" }}>
             {/* 예약목록 */}
             <div className="mt-5" style={{ width: "100%" }}>
               <h4 className=" float-start">예약 목록</h4>

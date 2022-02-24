@@ -35,25 +35,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/partner/information/Create.js"
     ],
-    "/partner/information/Tcreate": [
+    "/partner/information/detail/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/partner/information/Tcreate.js"
+      "static/chunks/pages/partner/information/detail/[id].js"
     ],
-    "/partner/information/list": [
+    "/partner/reservation/detail/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/partner/information/list.js"
+      "static/chunks/pages/partner/reservation/detail/[id].js"
     ],
-    "/partner/ptDiary/detail/[id]": [
+    "/partner/reservation/list": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/partner/ptDiary/detail/[id].js"
-    ],
-    "/partner/ptDiary/list": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/partner/ptDiary/list.js"
+      "static/chunks/pages/partner/reservation/list.js"
     ]
   },
   "ampFirstPages": []

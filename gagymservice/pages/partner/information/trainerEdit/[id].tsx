@@ -117,7 +117,7 @@ const Tcreate = () => {
   };
   return (
     <Layout>
-      <body>
+      <body className="bg-light">
         {trainers && (
           <div className={styles.body}>
             <div className="mt-5"></div>

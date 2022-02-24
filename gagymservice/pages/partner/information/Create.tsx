@@ -80,7 +80,7 @@ const Create = () => {
   };
   return (
     <Layout>
-      <body>
+      <body style={{ background: "#f8f9fa" }}>
         <div className={styles.body}>
           <div className="mt-5"></div>
           {/* 헬스장명 */}

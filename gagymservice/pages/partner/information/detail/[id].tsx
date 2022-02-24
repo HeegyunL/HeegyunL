@@ -54,110 +54,94 @@ const PartnerDetail = () => {
     <Layout>
       <body>
         {partners && (
-          <div className="mx-auto mt-5 " style={{ width: "100%" }}>
+          <div className="mx-auto mt-5 bg-light" style={{ width: "" }}>
             {/* 헬스장 사진 */}
-            <div className="d-flex">
+            <div className="row p-4 ">
               <img
+                className="col"
                 src={partners.gymPhoto}
                 alt={partners.fileName}
-                width={"300vw"}
-                height={"300vw"}
                 style={{
-                  marginLeft: "18%",
                   borderStyle: "solid",
                   borderWidth: "1px",
                   borderColor: "gray",
                   boxShadow: "2px 3px 5px 0px",
+                  maxWidth: "20vw",
+                  marginLeft: "auto",
+                  marginRight: "auto",
                 }}
-                // className="mx-auto"
               />
-              <div className="">
+              <div className="col-6">
                 {/* 헬스장 명 */}
-                <div className="d-flex mt-3">
-                  <h4
-                    className="col me-3 text-nowrap "
-                    style={{ width: "", marginLeft: "50px" }}
-                  >
+                <div className=" mt-3">
+                  <p className=" text-nowrap" style={{ width: "" }}>
                     헬스장 명
-                  </h4>
-                  <p
+                  </p>
+                  <h4
+                    className=""
                     style={{
-                      width: "40%",
-                      height: "45px",
-                      borderBlockEndWidth: "4px",
+                      height: "5vh",
                     }}
                   >
                     {partners.gymName}
-                  </p>
+                  </h4>
                 </div>
                 {/* 지역 */}
-                <div className="d-flex mt-3">
-                  <h4
-                    className="col me-3 text-nowrap text-center"
-                    style={{ width: "200px" }}
-                  >
+                <div className=" mt-3">
+                  <p className="  text-nowrap" style={{ width: "" }}>
                     지역
-                  </h4>
-                  <p
+                  </p>
+                  <h4
+                    className=""
                     style={{
-                      width: "40%",
-                      height: "45px",
-                      borderBlockEndWidth: "4px",
+                      height: "5vh",
                     }}
                   >
                     {partners.gymLocateSi} {partners.gymLocateGunGu}
-                  </p>
+                  </h4>
                 </div>
                 {/* 전화번호 */}
-                <div className="d-flex mt-3">
-                  <h4
-                    className="col me-3 text-nowrap text-center"
-                    style={{ width: "200px" }}
-                  >
+                <div className=" mt-3">
+                  <p className=" text-nowrap " style={{ width: "" }}>
                     전화 번호
-                  </h4>
-                  <p
+                  </p>
+                  <h4
+                    className=""
                     style={{
-                      width: "40%",
-                      height: "45px",
-                      borderBlockEndWidth: "4px",
+                      height: "5vh",
                     }}
                   >
                     {partners.gymPhoneNum}
-                  </p>
+                  </h4>
                 </div>
                 {/* 운영시간 */}
-                <div className="d-flex mt-3">
-                  <h4
-                    className="col me-3 text-nowrap text-center"
-                    style={{ width: "200px" }}
-                  >
+                <div className=" mt-3">
+                  <p className="  text-nowrap" style={{ width: "100%" }}>
                     운영시간
-                  </h4>
-                  <p
+                  </p>
+                  <h4
+                    className=""
                     style={{
-                      width: "40%",
-                      height: "45px",
-                      borderBlockEndWidth: "4px",
+                      height: "5vh",
                     }}
                   >
                     {partners.gymTime}
-                  </p>
+                  </h4>
                 </div>
               </div>
             </div>
             {/* 사업자 번호 */}
-            <div className="d-flex mt-5">
+            <div className="row mt-5 mx-auto">
               <h4
-                className="col me-3 text-nowrap text-center"
-                style={{ width: "200px" }}
+                className="col text-nowrap text-center"
+                style={{ width: "100%" }}
               >
                 사업자 번호
               </h4>
               <p
+                className="col"
                 style={{
-                  width: "400px",
-                  height: "45px",
+                  height: "5vh",
                   borderBlockEndWidth: "4px",
                 }}
               >
@@ -166,17 +150,17 @@ const PartnerDetail = () => {
             </div>
 
             {/* 주소 */}
-            <div className="d-flex mt-3">
+            <div className="row mt-3">
               <h4
-                className="col me-3 text-nowrap text-center"
-                style={{ width: "200px" }}
+                className="col text-nowrap text-center"
+                style={{ width: "100%" }}
               >
                 주 소
               </h4>
               <p
+                className="col"
                 style={{
-                  width: "400px",
-                  height: "45px",
+                  height: "5vh",
                   borderBlockEndWidth: "4px",
                 }}
               >
@@ -185,22 +169,21 @@ const PartnerDetail = () => {
             </div>
             {/* 강사 소개 */}
             {/* {trainers&&( */}
-            <div className="mt-3 d-flex">
+            <div className="mt-3 row">
               <h4
-                className="col me-3 text-nowrap text-center"
-                style={{ width: "200px" }}
+                className="col text-nowrap text-center"
+                style={{ width: "100%" }}
               >
                 강사 소개
               </h4>
               <p
+                className="col"
                 style={{
-                  width: "400px",
-                  height: "45px",
+                  height: "5vh",
                   borderBlockEndWidth: "4px",
                 }}
-                className="d-flex"
               >
-                <div className="d-flex ms-2">
+                <div className=" ms-2">
                   <Button
                     // name={item.trainerName}
                     color="primary"
@@ -210,7 +193,7 @@ const PartnerDetail = () => {
                     강사소개
                   </Button>
                   <Modal
-                    style={{ width: "700px" }}
+                    style={{ width: "90%" }}
                     toggle={() => setModalOpen(!modalOpen)}
                     isOpen={modalOpen}
                   >
@@ -243,21 +226,22 @@ const PartnerDetail = () => {
                             <p>한줄 소개 :</p>
                             <p>{item.trainerIntro}</p>
                           </div>
-                          <div className="d-flex">
+                          <div className="row">
                             <img
+                              className="col mx-auto"
                               style={{
-                                width: "150px",
-                                height: "150px",
+                                maxWidth: "150px",
+                                maxHeight: "150px",
                                 borderStyle: "solid",
                                 borderWidth: "1px",
                                 borderColor: "gray",
-                                boxShadow: "2px 3px 5px 0px",
+                                boxShadow: "1px 2px 3px 0px",
                               }}
                               src={item.trainerPhotoUrl}
                               alt="TrainerPhoto"
                             />
                             <table
-                              className="table ms-2"
+                              className="table mx-auto col "
                               style={{
                                 borderStyle: "solid",
                                 borderWidth: "3px",
@@ -359,20 +343,27 @@ const PartnerDetail = () => {
               </p>
             </div>
             {/* 가격 */}
-            <div style={{ marginLeft: "80px" }}>
+            <form
+              className="mx-auto bg-light p-1 container"
+              style={{
+                width: "60vw",
+                opacity: "60%",
+                marginTop: "10vh",
+              }}
+            >
               <h4
                 className="col  mt-5 text-nowrap "
-                style={{ width: "484px", marginLeft: "120px" }}
+                style={{ width: "", marginLeft: "6vw" }}
               >
-                가 격
+                가 격(헬스장)
               </h4>
-              <div className="mt-3 ms-5 d-flex">
-                <table className=" table ms-5 mt-5 " style={{ width: "78%" }}>
+              <div className="mt-3  ">
+                <table
+                  className=" table mx-auto mt-5 "
+                  style={{ width: "80%" }}
+                >
                   <thead>
                     <tr>
-                      <th className="text-center me-3" scope="col">
-                        <h3></h3>
-                      </th>
                       <th className="text-center" scope="col">
                         1Day
                       </th>
@@ -386,9 +377,6 @@ const PartnerDetail = () => {
                   </thead>
                   <tbody>
                     <tr className="">
-                      <th className="text-center" scope="row">
-                        <p>헬스장</p>
-                      </th>
                       <td>
                         <p className="text-center">{partners.gym1DayPrice}</p>
                       </td>
@@ -402,13 +390,10 @@ const PartnerDetail = () => {
                   </tbody>
                 </table>
               </div>
-              <div className="mt-3 ms-5 d-flex">
-                <table className=" table ms-5 " style={{ width: "780px" }}>
+              <div className="mt-3 ">
+                <table className="table  mx-auto" style={{ width: "80%" }}>
                   <thead>
                     <tr>
-                      <th className="text-center">
-                        <h3></h3>
-                      </th>
                       <th className="text-center">1달</th>
                       <th className="text-center">3달</th>
                       <th className="text-center">6달</th>
@@ -417,9 +402,6 @@ const PartnerDetail = () => {
                   </thead>
                   <tbody>
                     <tr className="justify-content-between">
-                      <td className="text-center text-nowrap">
-                        <p>헬스장</p>
-                      </td>
                       <td>
                         <p className="text-center">{partners.gymMonthPrice}</p>
                       </td>
@@ -436,7 +418,7 @@ const PartnerDetail = () => {
                   </tbody>
                 </table>
               </div>
-            </div>
+            </form>
             {/* 버튼 */}
             <div className="d-grid mt-3  d-md-flex justify-content-end">
               <button

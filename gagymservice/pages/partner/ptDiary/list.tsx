@@ -58,9 +58,9 @@ const List = () => {
     <div>
       <Layout>
         <main className={styles.main}>
-          <div className=" mt-5" style={{ width: "100%", marginLeft: "0px" }}>
+          <div className=" mt-5" style={{ marginLeft: "0px" }}>
             <h4 className=" float-start">예약 정보</h4>
-            <div className="d-flex justify-content-end align-items-center">
+            <div className="d-flex ">
               <select
                 className="form-select form-select-sm  "
                 style={{ width: "55px", height: "30px" }}

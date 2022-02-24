@@ -19,9 +19,9 @@ export default function Layout({ children }: LayoutProps) {
       </Head>
       {/* <header></header> */}
       <main className={styles.main}>
-        <article className="d-flex mt-3">
+        <article className="row bg-light">
           <Sidebar />
-          <div className="ms-4">{children}</div>
+          <div className="ms-4 col-10 ">{children}</div>
         </article>
         <Footer />
       </main>

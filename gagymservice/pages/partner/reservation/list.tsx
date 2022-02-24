@@ -5,6 +5,8 @@ import Layout from "../../../components/layout";
 import { requestFetchPagingReservation } from "../../../middleware/modules/reservation";
 import { AppDispatch, RootState } from "../../../provider";
 
+import styles from "../../../styles/Diarylist.module.css";
+
 const List = () => {
   const reservation = useSelector((state: RootState) => state.reservation);
   const router = useRouter();
@@ -46,11 +48,11 @@ const List = () => {
 
   return (
     <Layout>
-      <div>
-        <body>
-          <div className=" mt-5" style={{ width: "100%", marginLeft: "0px" }}>
-            <h4 className=" float-start">예약 정보</h4>
-            <div className="d-flex justify-content-end align-items-center">
+      <div className={styles.main}>
+        <body style={{ background: "#f8f9fa" }}>
+          <div className=" mt-5" style={{ marginLeft: "0px" }}>
+            <h4 className=" float-start me-3">예약 정보</h4>
+            <div className="d-flex ">
               <select
                 className="form-select form-select-sm  "
                 style={{ width: "55px", height: "30px" }}
@@ -69,10 +71,7 @@ const List = () => {
                 ))}
               </select>
             </div>
-            <table
-              className="table table-hover mt-4"
-              style={{ width: "1025px" }}
-            >
+            <table className="table table-hover mt-4">
               <thead>
                 <tr>
                   <th scope="col">이름</th>

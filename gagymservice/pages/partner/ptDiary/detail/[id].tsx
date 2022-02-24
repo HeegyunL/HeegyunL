@@ -48,8 +48,8 @@ const PTdetail = () => {
   return (
     <Layout>
       {diaryItem && (
-        <body>
-          <div className="mx-auto mt-5" style={{ width: "850px" }}>
+        <body className="bg-light">
+          <div className="mx-auto mt-5" style={{ width: "60vw" }}>
             <h4 className="mt-5 text-center"> PT 일지</h4>
             <div className="d-flex mt-5">
               <h4
@@ -175,6 +175,7 @@ const PTdetail = () => {
             </div>
             <div className="d-grid mt-3  d-md-flex justify-content-end">
               <Button
+                className="mb-3"
                 color="primary"
                 type="button"
                 onClick={() => setModalOpen(!modalOpen)}
@@ -189,7 +190,7 @@ const PTdetail = () => {
                     className=" modal-title"
                     // id="exampleModalLabel"
                   >
-                    강사 소개
+                    피드백
                   </h5>
                   <button
                     aria-label="Close"
@@ -205,7 +206,7 @@ const PTdetail = () => {
                   <div className="">
                     <div className="">
                       <p>피드백 :</p>
-                      <input ref={feedBackRef}></input>
+                      <input className="form-control" ref={feedBackRef}></input>
                     </div>
                   </div>
                   <div className="d-flex"></div>
